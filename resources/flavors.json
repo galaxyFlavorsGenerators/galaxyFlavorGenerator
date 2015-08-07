@@ -1,0 +1,114 @@
+[
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-stable",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 8,
+      "description": "Galaxy Docker Image"
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-deeptools",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 5,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-chemicaltoolbox",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 2,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-rna-workbench",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 2,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-blast",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-exom-seq",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-rna-workbench-extra",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 2,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-deseq2",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-mummer",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-ipython-notebook-plus",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-genome-annotation",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-imaging",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxyp",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    },
+    {
+      "is_automated": true,
+      "name": "bgruening/galaxy-metagenomics",
+      "is_trusted": true,
+      "is_official": false,
+      "star_count": 0,
+      "description": ""
+    }
+]
