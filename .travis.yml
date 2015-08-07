@@ -8,6 +8,7 @@ node_js:
   - "iojs"
   - "iojs-v1.0.4"
 before_script:
+  - npm install -g bower
   - npm install
   - bower install
   - gulp
