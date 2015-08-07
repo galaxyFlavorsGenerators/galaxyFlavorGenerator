@@ -1,0 +1,34 @@
+{
+  "name": "galaxy-flavor-generator",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "index.html",
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-inline": "0.0.11",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wookoouk/galaxyFlavorGenerator.git"
+  },
+  "keywords": [
+    "galaxy",
+    "usegalaxy",
+    "getgalaxy",
+    "galaxyproject"
+  ],
+  "author": "Martin Page <wookoouk@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wookoouk/galaxyFlavorGenerator/issues"
+  },
+  "homepage": "https://github.com/wookoouk/galaxyFlavorGenerator#readme"
+}

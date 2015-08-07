@@ -1,1 +1,4 @@
-# galaxyFlavorGenerator
+## install
+```
+bower install
+```

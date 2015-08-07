@@ -1,0 +1,29 @@
+{
+  "name": "galaxyFlavorGenerator",
+  "version": "0.1.0",
+  "authors": [
+    "Martin Page <wookoouk@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/components"
+  ],
+  "dependencies": {
+    "terrier": "*",
+    "jquery": "~2.1.4",
+    "react": "~0.13.3",
+    "FileSaver": "*"
+  },
+  "homepage": "https://github.com/wookoouk/galaxyFlavorGenerator",
+  "description": "Customise and Generate Galaxy server images",
+  "main": "index.html",
+  "keywords": [
+    "galaxy",
+    "flavor"
+  ]
+}

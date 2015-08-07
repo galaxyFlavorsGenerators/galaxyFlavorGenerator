@@ -1,0 +1,10 @@
+{
+  "os": "bgruening/galaxy-stable:15.05",
+  "brand": "deepTools",
+  "tools": [
+    {
+      "name": "",
+      "version": ""
+    }
+  ]
+}
