@@ -1,7 +1,7 @@
 {
   "name": "galaxy-flavor-generator",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "Configure and generate Galaxy server instances",
   "main": "index.html",
   "devDependencies": {
     "del": "^1.2.0",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wookoouk/galaxyFlavorGenerator.git"
+    "url": "git+https://github.com/galaxyFlavorsGenerators/galaxyFlavorGenerator.git"
   },
   "keywords": [
     "galaxy",
@@ -28,7 +28,7 @@
   "author": "Martin Page <wookoouk@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wookoouk/galaxyFlavorGenerator/issues"
+    "url": "https://github.com/ggalaxyFlavorsGenerators/galaxyFlavorGenerator/issues"
   },
-  "homepage": "https://github.com/wookoouk/galaxyFlavorGenerator#readme"
+  "homepage": "https://github.com/galaxyFlavorsGenerators/galaxyFlavorGenerator#readme"
 }
