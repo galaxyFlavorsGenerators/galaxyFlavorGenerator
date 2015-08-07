@@ -1,4 +1,4 @@
-#Galaxy Flavor Generator
+# Galaxy Flavor Generator
 
 ## Depends on
 Node.js    
@@ -7,7 +7,7 @@ Bower
 
 ## install
 ```
-bower install
-npm install
-gulp
+$ bower install
+$ npm install
+$ gulp
 ```

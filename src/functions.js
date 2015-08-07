@@ -135,7 +135,6 @@ function generateDockerFile(state) {
 
   DockerFile += 'CMD ["/usr/bin/startup"]\n';
 
-//console.log(DockerFile);
   downloadString(DockerFile, 'Dockerfile');
 }
 
@@ -144,6 +143,8 @@ function downloadString(string, fileName) {
   saveAs(blob, fileName);
 }
 
+
+//TODO example of repo query output
 //
 //callback({
 //  "total_results": "7",
