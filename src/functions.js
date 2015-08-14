@@ -103,16 +103,16 @@ function generateDockerFile(state) {
 
   //TODO bug! space at start
 
-  DockerFile += 'FROM ' + state.baseimage +'\n\r\n\r';
-  DockerFile += 'MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\r\n\r';
-  DockerFile += 'ENV GALAXY_CONFIG_BRAND "' + state.GALAXY_CONFIG_BRAND + '"\n\r\n\r';
-  DockerFile += 'WORKDIR /galaxy-central\n\r\n\r';
+  DockerFile += 'FROM ' + state.baseimage +'\n\n';
+  DockerFile += 'MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n';
+  DockerFile += 'ENV GALAXY_CONFIG_BRAND "' + state.GALAXY_CONFIG_BRAND + '"\n\n';
+  DockerFile += 'WORKDIR /galaxy-central\n\n';
 
   var repositories = '';
   var installURL = state.shed.uri;
 
   if (state.added.length >= 1) {
-    repositories += 'RUN install-repository \\ \n\r';
+    repositories += 'RUN install-repository \\ \n';
     var i = 0;
     state.added.forEach(function (a) {
       i++;
@@ -120,20 +120,20 @@ function generateDockerFile(state) {
       if (i == state.added.length) {
         slash = '';
       }
-      repositories += '    "--url ' + installURL + ' -o ' + a.repo_owner_username + ' --name ' + a.name + '" ' + slash + '\n\r';
+      repositories += '    "--url ' + installURL + ' -o ' + a.repo_owner_username + ' --name ' + a.name + '" ' + slash + '\n';
     });
   }
 
 
-  DockerFile += repositories + '\n\r';
+  DockerFile += repositories + '\n';
 
-  DockerFile += 'VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\r\n\r';
+  DockerFile += 'VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\n';
 
-  DockerFile += 'EXPOSE :80\n\r';
-  DockerFile += 'EXPOSE :21\n\r';
-  DockerFile += 'EXPOSE :8080\n\r\n\r';
+  DockerFile += 'EXPOSE :80\n';
+  DockerFile += 'EXPOSE :21\n';
+  DockerFile += 'EXPOSE :8080\n\n';
 
-  DockerFile += 'CMD ["/usr/bin/startup"]\n\r';
+  DockerFile += 'CMD ["/usr/bin/startup"]\n';
 
 //console.log(DockerFile);
   downloadString(DockerFile, 'Dockerfile');
