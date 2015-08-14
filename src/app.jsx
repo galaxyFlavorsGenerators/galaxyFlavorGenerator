@@ -228,7 +228,6 @@ var FlavorApp = React.createClass({
     };
   },
   loadImages: function () {
-    //console.log("ajax stuff");
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json';
     var correctURL = 'resources/flavors.json';
     $.ajax({
@@ -242,6 +241,7 @@ var FlavorApp = React.createClass({
       }.bind(this)
     });
   },
+
   loadBiojs: function () {
     // TODO: on deployment server cronjob => curl --globoff 'https://registry.npmjs.org/-/_view/byKeyword?startkey=["galaxy-vis"]&endkey=["galaxy-vis",{}]&group_level=3' inside resources/biojs.json
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/biojs.json';
@@ -262,8 +262,8 @@ var FlavorApp = React.createClass({
     this.loadImages();
     this.loadBiojs();
   },
+
   imageChange: function(newValue) {
-    //console.log('State changed to ' + newValue.target.value);
     this.setState({
       baseimage: newValue.target.value || null
     });
