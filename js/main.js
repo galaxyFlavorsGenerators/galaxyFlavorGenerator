@@ -311,13 +311,13 @@ var FlavorApp = React.createClass({
     };
   },
   loadImages: function loadImages() {
-    //console.log("ajax stuff");
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json';
     var correctURL = 'resources/flavors.json';
     $.ajax({
       url: tempURL,
       dataType: 'json',
       success: (function (data) {
+        console.log(data);
         this.setState({ images: data });
       }).bind(this),
       error: (function (xhr, status, err) {
@@ -778,7 +778,6 @@ function generateDockerFile(state) {
 
   DockerFile += 'CMD ["/usr/bin/startup"]\n';
 
-//console.log(DockerFile);
   downloadString(DockerFile, 'Dockerfile');
 }
 
@@ -787,6 +786,8 @@ function downloadString(string, fileName) {
   saveAs(blob, fileName);
 }
 
+
+//TODO example of repo query output
 //
 //callback({
 //  "total_results": "7",
