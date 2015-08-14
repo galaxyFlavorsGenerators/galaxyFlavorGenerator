@@ -145,7 +145,6 @@ var FlavorApp = React.createClass({
     };
   },
   loadImages: function () {
-    console.log("ajax stuff");
     $.ajax({
       url: 'resources/flavors.json',
       dataType: 'json',
@@ -157,10 +156,10 @@ var FlavorApp = React.createClass({
       }.bind(this)
     });
   },
-  componentDidMount: function() {
+  componentDidMount: function () {
     this.loadImages();
   },
-  imageChange: function(newValue) {
+  imageChange: function (newValue) {
     console.log('State changed to ' + newValue.target.value);
     this.setState({
       baseimage: newValue.target.value || null
