@@ -145,8 +145,10 @@ var FlavorApp = React.createClass({
     };
   },
   loadImages: function () {
+    var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json';
+    var correctURL = 'resources/flavors.json';
     $.ajax({
-      url: 'resources/flavors.json',
+      url: tempURL,
       dataType: 'json',
       success: function (data) {
         this.setState({images: data});
