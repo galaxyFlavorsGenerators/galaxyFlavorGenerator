@@ -177,7 +177,6 @@ var RepositoriessList = React.createClass({
     );
   }
 });
-
 var FlavorApp = React.createClass({
   displayName: 'FlavorApp',
 
@@ -189,8 +188,32 @@ var FlavorApp = React.createClass({
       searchText: '',
       shed: sheds[0],
       searchCount: 0,
-      GALAXY_CONFIG_BRAND: 'Galaxy'
+      GALAXY_CONFIG_BRAND: 'Galaxy',
+      images: [],
+      baseimage: 'bgruening/galaxy-stable'
     };
+  },
+  loadImages: function loadImages() {
+    console.log("ajax stuff");
+    $.ajax({
+      url: 'resources/flavors.json',
+      dataType: 'json',
+      success: (function (data) {
+        this.setState({ images: data });
+      }).bind(this),
+      error: (function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }).bind(this)
+    });
+  },
+  componentDidMount: function componentDidMount() {
+    this.loadImages();
+  },
+  imageChange: function imageChange(newValue) {
+    console.log('State changed to ' + newValue.target.value);
+    this.setState({
+      baseimage: newValue.target.value || null
+    });
   },
   onSearchChange: function onSearchChange(e) {
     this.setState({ searchText: e.target.value });
@@ -251,6 +274,13 @@ var FlavorApp = React.createClass({
     if (this.state.added.length > 0) {
       hiddenClass = '';
     }
+    var images = this.state.images.map(function (value) {
+      return React.createElement(
+        'option',
+        { value: value.name },
+        value.name
+      );
+    });
     return React.createElement(
       'div',
       { className: 'container' },
@@ -279,6 +309,20 @@ var FlavorApp = React.createClass({
         React.createElement(
           'div',
           { className: 'col12' },
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              'label',
+              null,
+              'Base galaxy image:'
+            ),
+            React.createElement(
+              'select',
+              { onChange: this.imageChange },
+              images
+            )
+          ),
           React.createElement(
             'label',
             null,
@@ -463,7 +507,7 @@ function generateDockerFile(state) {
 
   //TODO bug! space at start
 
-  DockerFile += 'FROM bgruening/galaxy-stable:15.05\n\n';
+  DockerFile += 'FROM ' + state.baseimage +'\n\n';
   DockerFile += 'MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n';
   DockerFile += 'ENV GALAXY_CONFIG_BRAND "' + state.GALAXY_CONFIG_BRAND + '"\n\n';
   DockerFile += 'WORKDIR /galaxy-central\n\n';

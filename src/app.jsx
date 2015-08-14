@@ -130,7 +130,6 @@ var RepositoriessList = React.createClass({
     )
   }
 });
-
 var FlavorApp = React.createClass({
   getInitialState: function () {
     return {
@@ -140,8 +139,32 @@ var FlavorApp = React.createClass({
       searchText: '',
       shed: sheds[0],
       searchCount: 0,
-      GALAXY_CONFIG_BRAND: 'Galaxy'
+      GALAXY_CONFIG_BRAND: 'Galaxy',
+      images: [],
+      baseimage: 'bgruening/galaxy-stable'
     };
+  },
+  loadImages: function () {
+    console.log("ajax stuff");
+    $.ajax({
+      url: 'resources/flavors.json',
+      dataType: 'json',
+      success: function (data) {
+        this.setState({images: data});
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  componentDidMount: function() {
+    this.loadImages();
+  },
+  imageChange: function(newValue) {
+    console.log('State changed to ' + newValue.target.value);
+    this.setState({
+      baseimage: newValue.target.value || null
+    });
   },
   onSearchChange: function (e) {
     this.setState({searchText: e.target.value});
@@ -203,6 +226,9 @@ var FlavorApp = React.createClass({
     if (this.state.added.length > 0) {
       hiddenClass = '';
     }
+    var images = this.state.images.map(function (value) {
+      return <option value={value.name}>{value.name}</option>
+    });
     return (
       <div className="container">
         <h2>Please add repositories you would like to have in your Galaxy</h2>
@@ -220,6 +246,12 @@ var FlavorApp = React.createClass({
 
         <div className="row">
           <div className="col12">
+            <div >
+              <label>Base galaxy image:</label>
+              <select onChange={this.imageChange}>
+                {images}
+              </select>
+            </div>
             <label>GALAXY_CONFIG_BRAND</label>
             <input type="text" placeholder="Galaxy" onChange={this.changeBrand}/>
 
@@ -242,7 +274,6 @@ var FlavorApp = React.createClass({
 
         <div className="row">
           <div className="col8">
-
             <div id="repositories-added">
               <RepositoriessList added={this.state.added}
                                  removeFromAdded={this.removeFromAdded}/>

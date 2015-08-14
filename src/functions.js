@@ -103,7 +103,7 @@ function generateDockerFile(state) {
 
   //TODO bug! space at start
 
-  DockerFile += 'FROM bgruening/galaxy-stable:15.05\n\n';
+  DockerFile += 'FROM ' + state.baseimage +'\n\n';
   DockerFile += 'MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n';
   DockerFile += 'ENV GALAXY_CONFIG_BRAND "' + state.GALAXY_CONFIG_BRAND + '"\n\n';
   DockerFile += 'WORKDIR /galaxy-central\n\n';
