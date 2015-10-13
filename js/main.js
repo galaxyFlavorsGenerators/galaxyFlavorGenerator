@@ -200,7 +200,6 @@ var FlavorApp = React.createClass({
       url: tempURL,
       dataType: 'json',
       success: (function (data) {
-        console.log(data);
         this.setState({ images: data });
       }).bind(this),
       error: (function (xhr, status, err) {

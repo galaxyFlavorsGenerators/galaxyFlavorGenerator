@@ -36,7 +36,7 @@ gulp.task('clean', ['uglify'], function () {
 gulp.task('one-file', function () {
   gulp.src('index.html')
     .pipe(inline({
-      base: './',
+      base: './'
     }))
     .pipe(rename('one-file.html'))
     .pipe(gulp.dest('./'));
