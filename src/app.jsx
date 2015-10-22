@@ -7,11 +7,6 @@ var sheds = [
     uri: 'https://toolshed.g2.bx.psu.edu/',
     url: 'https://toolshed.g2.bx.psu.edu/api/repositories?q='
   },
-  {
-    name: 'BioJS',
-    shortName: 'BioJS',
-    url: 'https://registry.npmjs.org/-/_view/byKeyword?startkey=["galaxy-vis"]&endkey=["galaxy-vis",{}]&group_level=3'
-  },
 //        {
 //            name: 'Test ToolShed',
 //            shortName: 'test',
