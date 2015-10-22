@@ -2149,10 +2149,11 @@ var BioJs = React.createClass({
         this.props.biojs.map(function (item, i) {
           var zebra = isEvenNumber(i) ? '' : 'zebra';
           var thisclick = this.props.addToAdded.bind(this, item);
+          var toolTipText = item.key[2];
           if (item.added) {
             return React.createElement(
               'li',
-              { classname: zebra },
+              { classname: zebra, 'data-tooltip': toolTipText },
               React.createElement(
                 'span',
                 null,
@@ -2169,9 +2170,17 @@ var BioJs = React.createClass({
               )
             );
           } else {
+
+            var biojslink = "http://biojs.io/d/" + item.key[1];
+            var repoButton = React.createElement(
+              'a',
+              { href: biojslink, target: '_blank',
+                className: 'button primary thin right' },
+              'biojs.io'
+            );
             return React.createElement(
               'li',
-              { className: zebra },
+              { className: zebra, 'data-tooltip': toolTipText },
               React.createElement(
                 'span',
                 null,
@@ -2185,7 +2194,8 @@ var BioJs = React.createClass({
                   { className: 'success thin right',
                     onClick: this.props.addToAdded.bind(this, item) },
                   'Add'
-                )
+                ),
+                repoButton
               )
             );
           }

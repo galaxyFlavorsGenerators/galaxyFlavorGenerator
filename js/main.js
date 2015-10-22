@@ -217,7 +217,7 @@ var RepositoriessList = React.createClass({
   render: function render() {
     var className = this.props.added.length > 0 ? 'border' : '';
     var self = this;
-    console.log("rendering repos");
+    //console.log("rendering repos");
     return React.createElement(
       'ul',
       { className: className },
@@ -259,8 +259,8 @@ var Vislist = React.createClass({
   render: function render() {
     var className = this.props.biojslist.length > 0 ? 'border' : '';
     var self = this;
-    console.log("rendering: ");
-    console.log(this.props.biojslist);
+    //console.log("rendering: ");
+    //console.log(this.props.biojslist);
     return React.createElement(
       'ul',
       { className: className },
@@ -315,9 +315,11 @@ var FlavorApp = React.createClass({
     };
   },
   loadImages: function loadImages() {
-    console.log("ajax stuff");
+    //console.log("ajax stuff");
+    var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json';
+    var correctURL = 'resources/flavors.json';
     $.ajax({
-      url: 'resources/flavors.json',
+      url: tempURL,
       dataType: 'json',
       success: (function (data) {
         this.setState({ images: data });
@@ -328,12 +330,15 @@ var FlavorApp = React.createClass({
     });
   },
   loadBiojs: function loadBiojs() {
+    // TODO: on deployment server cronjob => curl --globoff 'https://registry.npmjs.org/-/_view/byKeyword?startkey=["galaxy-vis"]&endkey=["galaxy-vis",{}]&group_level=3' inside resources/biojs.json
+    var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/biojs.json';
+    var correctURL = 'resources/biojs.json';
     $.ajax({
-      url: 'resources/biojs.json',
+      url: tempURL,
       dataType: 'json',
       success: (function (data) {
         this.setState({ biojs: data });
-        console.log(this.state.biojs);
+        //console.log(this.state.biojs)
       }).bind(this),
       error: (function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -345,7 +350,7 @@ var FlavorApp = React.createClass({
     this.loadBiojs();
   },
   imageChange: function imageChange(newValue) {
-    console.log('State changed to ' + newValue.target.value);
+    //console.log('State changed to ' + newValue.target.value);
     this.setState({
       baseimage: newValue.target.value || null
     });
@@ -375,14 +380,14 @@ var FlavorApp = React.createClass({
     }
   },
   addToVis: function addToVis(a) {
-    console.log("adding: " + a.key[1]);
+    //console.log("adding: " + a.key[1]);
     var exists = this.state.biojslist.filter(function (aa) {
       return a.key[1] == aa.key[1];
     }).length > 0;
     if (!exists) {
       var newAdded = this.state.biojslist.concat([a]);
-      console.log("biojsvis: ");
-      console.log(newAdded);
+      //console.log("biojsvis: ");
+      //console.log(newAdded);
       var self = this;
       var newFound = [];
       this.state.biojs.map(function (f) {
@@ -392,14 +397,14 @@ var FlavorApp = React.createClass({
           f.added = true;
         }
         newFound.push(f);
-        console.log(newFound);
+        //console.log(newFound);
       });
       this.setState({ biojslist: newAdded, biojs: newFound });
-      console.log(this.state.biojslist);
+      //console.log(this.state.biojslist);
     }
   },
   changeBrand: function changeBrand(e) {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     var newBrand = e.target.value;
     if (newBrand.length > 0) {
       this.setState({ GALAXY_CONFIG_BRAND: newBrand });
