@@ -38,6 +38,9 @@ function doASearch(self) {
 
 function search(query, shed, cb) {
   var fullURL = shed + query + '&jsonp=true';
+  if (query.indexOf("byKeyword?startkey") > -1){
+    fullURL = shed;
+  }
   if (currentSearch) {
     currentSearch.abort();
     //console.log('aborted');
@@ -124,9 +127,15 @@ function generateDockerFile(state) {
     });
   }
 
-
   DockerFile += repositories + '\n';
-
+  var biojs = '';
+  if (state.biojslist.length > 0){
+    biojs += "RUN npm install -g biojs2galaxy \n";
+    state.biojslist.forEach(function (a){
+      biojs += 'RUN biojs2galaxy ' + a.key[1] + '\n';
+    });
+  }
+  DockerFile += biojs + '\n\n';
   DockerFile += 'VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\n';
 
   DockerFile += 'EXPOSE :80\n';
