@@ -1,5 +1,5 @@
 'use strict';
-
+var Tabs = ReactSimpleTabs;
 var sheds = [
   {
     name: 'Main ToolShed',
