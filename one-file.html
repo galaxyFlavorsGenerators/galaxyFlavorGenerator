@@ -484,7 +484,7 @@ body {
   line-height: 1.5;
   font-weight: 400;
   font-family: 'Lato', Calibri, Arial, sans-serif;
-  color: #444444;
+  color: #3d4351;
   -webkit-font-smoothing: antialiased;
 }
 html,
@@ -575,13 +575,13 @@ a:hover {
 .button,
 button {
   display: inline-block;
-  height: 38px;
+  height: 34px;
   padding: 0 30px;
   color: #5d9cec;
   text-align: center;
   font-size: .7rem;
   font-weight: 600;
-  line-height: 38px;
+  line-height: 34px;
   letter-spacing: .1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -644,8 +644,8 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .button.primary,
 button.primary,
@@ -664,6 +664,15 @@ input[type="button"].primary:hover {
   color: #fff;
   background-color: #3bafda;
   border-color: #3bafda;
+}
+.button.primary.hollow,
+button.primary.hollow,
+input[type="submit"].primary.hollow,
+input[type="reset"].primary.hollow,
+input[type="button"].primary.hollow {
+  color: #4fc1e9;
+  background-color: #4fc1e9;
+  border-color: #4fc1e9;
 }
 .button.success,
 button.success,
@@ -688,6 +697,26 @@ input[type="button"].success:focus {
   background-color: #8cc152;
   border-color: #8cc152;
 }
+.button.success.hollow,
+button.success.hollow,
+input[type="submit"].success.hollow,
+input[type="reset"].success.hollow,
+input[type="button"].success.hollow {
+  color: #a0d468;
+}
+.button.success.hollow:hover,
+button.success.hollow:hover,
+input[type="submit"].success.hollow:hover,
+input[type="reset"].success.hollow:hover,
+input[type="button"].success.hollow:hover,
+.button.success.hollow:focus,
+button.success.hollow:focus,
+input[type="submit"].success.hollow:focus,
+input[type="reset"].success.hollow:focus,
+input[type="button"].success.hollow:focus {
+  background-color: #a0d468;
+  border-color: #a0d468;
+}
 .button.error,
 button.error,
 input[type="submit"].error,
@@ -711,12 +740,96 @@ input[type="button"].error:focus {
   background-color: #da4453;
   border-color: #da4453;
 }
-input[type="submit"].primary:focus,
-input[type="reset"].primary:focus,
-input[type="button"].primary:focus {
+.button.error.hollow,
+button.error.hollow,
+input[type="submit"].error.hollow,
+input[type="reset"].error.hollow,
+input[type="button"].error.hollow {
+  color: #ed5565;
+}
+.button.error.hollow:hover,
+button.error.hollow:hover,
+input[type="submit"].error.hollow:hover,
+input[type="reset"].error.hollow:hover,
+input[type="button"].error.hollow:hover,
+.button.error.hollow:focus,
+button.error.hollow:focus,
+input[type="submit"].error.hollow:focus,
+input[type="reset"].error.hollow:focus,
+input[type="button"].error.hollow:focus {
+  background-color: #ed5565;
+  border-color: #ed5565;
+}
+.button.warning,
+button.warning,
+input[type="submit"].warning,
+input[type="reset"].warning,
+input[type="button"].warning {
   color: #fff;
-  background-color: #5d9cec;
-  border-color: #5d9cec;
+  background-color: #ffce54;
+  border-color: #ffce54;
+}
+.button.warning:hover,
+button.warning:hover,
+input[type="submit"].warning:hover,
+input[type="reset"].warning:hover,
+input[type="button"].warning:hover,
+.button.warning:focus,
+button.warning:focus,
+input[type="submit"].warning:focus,
+input[type="reset"].warning:focus,
+input[type="button"].warning:focus {
+  color: #fff;
+  background-color: #f6b842;
+  border-color: #f6b842;
+}
+.button.warning.hollow,
+button.warning.hollow,
+input[type="submit"].warning.hollow,
+input[type="reset"].warning.hollow,
+input[type="button"].warning.hollow {
+  color: #ffce54;
+}
+.button.warning.hollow:hover,
+button.warning.hollow:hover,
+input[type="submit"].warning.hollow:hover,
+input[type="reset"].warning.hollow:hover,
+input[type="button"].warning.hollow:hover,
+.button.warning.hollow:focus,
+button.warning.hollow:focus,
+input[type="submit"].warning.hollow:focus,
+input[type="reset"].warning.hollow:focus,
+input[type="button"].warning.hollow:focus {
+  background-color: #ffce54;
+  border-color: #ffce54;
+}
+.button.hollow,
+button.hollow,
+input[type="submit"].hollow,
+input[type="reset"].hollow,
+input[type="button"].hollow {
+  background-color: transparent;
+}
+.button.hollow:hover,
+button.hollow:hover,
+input[type="submit"].hollow:hover,
+input[type="reset"].hollow:hover,
+input[type="button"].hollow:hover,
+.button.hollow:focus,
+button.hollow:focus,
+input[type="submit"].hollow:focus,
+input[type="reset"].hollow:focus,
+input[type="button"].hollow:focus {
+  color: #fff;
+}
+.button.big,
+button.big,
+input[type="submit"].big,
+input[type="reset"].big,
+input[type="button"].big {
+  padding: 8px 40px;
+  height: auto;
+  font-size: .9rem;
 }
 input[type="email"],
 input[type="number"],
@@ -789,6 +902,18 @@ textarea[disabled] {
   cursor: not-allowed;
   overflow: hidden;
   white-space: nowrap;
+  color: #aab2bd;
+  border: none;
+}
+input[disabled]:hover,
+textarea[disabled]:hover,
+input[disabled]:focus,
+textarea[disabled]:focus {
+  background: #edf3f7;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #aab2bd;
+  border: none;
 }
 textarea:focus,
 select:focus {
@@ -825,6 +950,33 @@ label > .label-body {
   display: block;
   margin: 0;
   color: #656d78;
+}
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+.input-group input {
+  display: table-cell;
+  position: relative;
+  z-index: 2;
+  float: left;
+  margin-bottom: 0;
+  width: auto;
+}
+.input-group input:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group input:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.input-group input:not(:first-child) {
+  margin-left: -1px;
+}
+.input-group input:not(:first-child):not(:last-child) {
+  border-radius: 0;
 }
 ul {
   list-style: circle inside;
@@ -905,13 +1057,13 @@ form {
 .bold {
   font-weight: 900;
 }
-.button-hover {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+.transition-all {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 hr {
-  margin-top: 3rem;
-  margin-bottom: 3.5rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
   border-width: 0;
   border-top: 1px solid #ccd1d9;
 }
@@ -921,7 +1073,7 @@ hr {
   border: 1px dashed #ccd1d9;
 }
 .heart {
-  color: #E74C3C;
+  color: #ed5565;
 }
 .caret {
   display: inline-block;
@@ -950,92 +1102,67 @@ hr {
   color: #ffffff;
   padding: 0;
   background-color: #4fc1e9;
-  height: 64px;
-  line-height: 64px;
+  height: 50px;
+  line-height: 50px;
+  z-index: 200;
+}
+.bar.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.bar a {
+  font-weight: 400;
+  font-size: 20px;
+  color: #FFFFFF;
+  display: block;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.bar a:hover {
+  color: #3d4351;
+}
+.bar img {
+  height: 40px;
+  width: auto;
+  float: left;
+  margin: 5px;
+}
+.bar h1,
+.bar h2,
+.bar h3,
+.bar h4,
+.bar h5,
+.bar h6,
+.bar a,
+.bar p {
+  float: left;
+  margin: 0;
+  line-height: 50px;
 }
 .bar ul li {
-  margin-left: 8px;
+  margin-left: 16px;
+  float: left;
+  list-style: none;
 }
 .bar .menuButton {
-  margin-top: 11px;
-  margin-bottom: 17px;
+  padding-top: 5px;
   float: left;
-  font-size: 32px;
 }
 .bar .menuButton span {
   display: block;
   width: 36px;
-  height: 6px;
+  height: 4px;
   background: #fff;
-  margin: 6px auto 0;
+  margin: 7px auto 0;
   clear: both;
 }
 .bar .menuButton:hover {
   cursor: pointer;
 }
-.bar .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  font-size: 14px;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  display: block;
-}
-.bar .dropdown-menu .open {
-  display: block;
-}
-.bar .dropdown-menu li a {
-  color: black;
-}
-.bar a,
-#menu a {
-  color: #FFFFFF;
-  display: block;
-}
-.bar img,
-#menu img {
-  height: 54px;
-  width: auto;
-  float: left;
-  margin: 5px 15px 5px 0;
-}
-.bar h1,
-#menu h1,
-.bar h2,
-#menu h2,
-.bar h3,
-#menu h3,
-.bar h4,
-#menu h4,
-.bar h5,
-#menu h5,
-.bar h6,
-#menu h6,
-.bar a,
-#menu a,
-.bar p,
-#menu p {
-  float: left;
-  margin: 0;
-  line-height: 64px;
-}
 #menu {
-  z-index: 200;
+  z-index: 220;
   display: block;
   position: fixed;
   left: 0;
@@ -1053,12 +1180,34 @@ hr {
   -o-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
 }
+#menu a {
+  color: #FFFFFF;
+  display: block;
+}
+#menu img {
+  height: 40px;
+  width: auto;
+  float: left;
+  margin: 5px 15px 5px 0;
+}
+#menu h1,
+#menu h2,
+#menu h3,
+#menu h4,
+#menu h5,
+#menu h6,
+#menu a,
+#menu p {
+  float: left;
+  margin: 0;
+  line-height: 50px;
+}
 #menu .side-header {
   color: #FFFFFF;
   background-color: #4fc1e9;
   font-size: 30px;
-  height: 64px;
-  line-height: 64px;
+  height: 50px;
+  line-height: 50px;
 }
 #menu ul li {
   position: relative;
@@ -1069,19 +1218,19 @@ hr {
   float: left;
   width: 100%;
   margin: 0;
-  height: 64px;
+  height: 50px;
 }
 #menu ul li a {
   width: 100%;
   display: block;
   color: #000000;
 }
-#menu ul li a i {
+#menu ul li a .icon {
+  width: 20px;
   margin-left: 30px;
-  float: left;
 }
 #menu ul li a span {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 #menu ul li:hover,
 #menu ul li:active,
@@ -1092,6 +1241,10 @@ hr {
 #menu ul li:active a,
 #menu ul li .active a {
   color: #3bafda;
+}
+#panel {
+  background: #ffffff;
+  height: 100%;
 }
 #panel:after {
   position: absolute;
@@ -1137,34 +1290,6 @@ hr {
     cursor: pointer;
   }
 }
-.slideout-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-  width: 256px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  display: none;
-}
-.slideout-panel {
-  position: relative;
-  z-index: 1;
-}
-.slideout-open,
-.slideout-open body,
-.slideout-open .slideout-panel {
-  overflow: hidden;
-}
-.slideout-open .slideout-menu {
-  display: block;
-}
-#panel {
-  background: #ffffff;
-  height: 100%;
-}
 img {
   -ms-interpolation-mode: bicubic;
   border: 0;
@@ -1194,8 +1319,8 @@ img.center {
   margin-right: auto;
 }
 .tile {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -1298,10 +1423,11 @@ img.center {
 [data-tooltip]:after {
   z-index: 1000;
   padding: 8px;
-  width: 160px;
+  width: auto;
+  text-align: center;
   background-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.9);
-  color: #444444;
+  color: #3d4351;
   content: attr(data-tooltip);
   border: 1px solid #aab2bd;
   border-radius: 4px;
@@ -1331,23 +1457,29 @@ img.center {
 [data-tooltip]:after,
 .tooltip:after,
 .tooltip-top:after {
-  margin-left: -80px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 [data-tooltip]:hover:before,
-[data-tooltip]:hover:after,
 [data-tooltip]:focus:before,
-[data-tooltip]:focus:after,
 .tooltip:hover:before,
-.tooltip:hover:after,
 .tooltip:focus:before,
-.tooltip:focus:after,
 .tooltip-top:hover:before,
-.tooltip-top:hover:after,
-.tooltip-top:focus:before,
-.tooltip-top:focus:after {
+.tooltip-top:focus:before {
   -webkit-transform: translateY(-12px);
   -moz-transform: translateY(-12px);
   transform: translateY(-12px);
+}
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:after,
+.tooltip:hover:after,
+.tooltip:focus:after,
+.tooltip-top:hover:after,
+.tooltip-top:focus:after {
+  -webkit-transform: translate(-50%, -12px);
+  -moz-transform: translate(-50%, -12px);
+  transform: translate(-50%, -12px);
 }
 /* Left */
 .tooltip-left:before,
@@ -1365,12 +1497,16 @@ img.center {
   border-left-color: rgba(188, 169, 169, 0.9);
 }
 .tooltip-left:hover:before,
-.tooltip-left:hover:after,
-.tooltip-left:focus:before,
-.tooltip-left:focus:after {
+.tooltip-left:focus:before {
   -webkit-transform: translateX(-12px);
   -moz-transform: translateX(-12px);
   transform: translateX(-12px);
+}
+.tooltip-left:hover:after,
+.tooltip-left:focus:after {
+  -webkit-transform: translate(-50%, -12px);
+  -moz-transform: translate(-50%, -12px);
+  transform: translate(-50%, -12px);
 }
 /* Bottom */
 .tooltip-bottom:before,
@@ -1387,12 +1523,16 @@ img.center {
   border-bottom-color: rgba(188, 169, 169, 0.9);
 }
 .tooltip-bottom:hover:before,
-.tooltip-bottom:hover:after,
-.tooltip-bottom:focus:before,
-.tooltip-bottom:focus:after {
+.tooltip-bottom:focus:before {
   -webkit-transform: translateY(12px);
   -moz-transform: translateY(12px);
   transform: translateY(12px);
+}
+.tooltip-bottom:hover:after,
+.tooltip-bottom:focus:after {
+  -webkit-transform: translate(-50%, 12px);
+  -moz-transform: translate(-50%, 12px);
+  transform: translate(-50%, 12px);
 }
 /* Right */
 .tooltip-right:before,
@@ -1769,6 +1909,84 @@ button.disabled:hover, .button.disabled:hover {
     }
 }
 
+.tabs-navigation {
+
+    padding: 0 20px;
+
+    max-height: 50px;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+.tabs-menu {
+
+    display: table;
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+.tabs-menu-item {
+
+    float: left;
+    width: auto;
+
+}
+
+.tabs-menu-item a {
+
+    display: block;
+
+    padding: 0 40px;
+
+    height: 50px;
+
+    line-height: 50px;
+
+    border-bottom: 0;
+
+    color: #a9a9a9;
+
+}
+
+.tabs-menu-item:not(.is-active) a:hover {
+
+    color: #3498db;
+
+}
+
+.tabs-menu-item.is-active a {
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-top: 2px solid #3498db;
+
+    border-bottom: 0;
+
+    color: #333;
+
+}
+
+.tabs-panel {
+
+    display: none;
+
+    padding: 30px;
+
+}
+
+.tabs-panel.is-active {
+
+    display: block;
+
+}
 
 </style>
 
@@ -1825,7 +2043,6 @@ function initMenu() {
   var menuButton = document.querySelectorAll('.menuButton')[0];
 
   function onMenuButton() {
-    console.log('on menu');
     toggleClass(body, 'menuOpen');
     setTimeout(function () {
       menuButton.removeEventListener('click', onMenuButton, false);
@@ -1834,7 +2051,6 @@ function initMenu() {
   }
 
   function onPanel() {
-    console.log('on panel');
     removeClass(body, 'menuOpen');
     setTimeout(function () {
       panel.removeEventListener('click', onPanel, false);
@@ -1843,8 +2059,6 @@ function initMenu() {
   }
 
   if (menuButton && panel) {
-    //kick it off
-    console.log(menuButton, panel);
     menuButton.addEventListener('click', onMenuButton);
   }
 
@@ -1882,30 +2096,16 @@ if (document.readyState != 'loading') {
 
 function init() {
   initMenu();
-  //dropdowns();
-}
-
-function dropdowns() {
-  var toggle = '[data-toggle="dropdown"]';
-  var found = $(toggle);
-  console.log(found);
-  found.on('click', function () {
-    console.log('clicked');
-    var e = $(this);
-
-    var dm = e.parent().find('.dropdown-menu');
-    dm.toggleClass('open');
-
-  });
 }
 
 </script>
 <script type="text/javascript">
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
-var saveAs=saveAs||function(e){"use strict";if("undefined"==typeof navigator||!/MSIE [1-9]\./.test(navigator.userAgent)){var t=e.document,n=function(){return e.URL||e.webkitURL||e},o=t.createElementNS("http://www.w3.org/1999/xhtml","a"),r="download"in o,i=function(e){var t=new MouseEvent("click");e.dispatchEvent(t)},a=e.webkitRequestFileSystem,c=e.requestFileSystem||a||e.mozRequestFileSystem,u=function(t){(e.setImmediate||e.setTimeout)(function(){throw t},0)},f="application/octet-stream",s=0,d=500,l=function(t){var o=function(){"string"==typeof t?n().revokeObjectURL(t):t.remove()};e.chrome?o():setTimeout(o,d)},v=function(e,t,n){t=[].concat(t);for(var o=t.length;o--;){var r=e["on"+t[o]];if("function"==typeof r)try{r.call(e,n||e)}catch(i){u(i)}}},p=function(e){return/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type)?new Blob(["﻿",e],{type:e.type}):e},w=function(t,u,d){d||(t=p(t));var w,y,m,S=this,h=t.type,O=!1,R=function(){v(S,"writestart progress write writeend".split(" "))},b=function(){if((O||!w)&&(w=n().createObjectURL(t)),y)y.location.href=w;else{var o=e.open(w,"_blank");void 0==o&&"undefined"!=typeof safari&&(e.location.href=w)}S.readyState=S.DONE,R(),l(w)},g=function(e){return function(){return S.readyState!==S.DONE?e.apply(this,arguments):void 0}},E={create:!0,exclusive:!1};return S.readyState=S.INIT,u||(u="download"),r?(w=n().createObjectURL(t),o.href=w,o.download=u,void setTimeout(function(){i(o),R(),l(w),S.readyState=S.DONE})):(e.chrome&&h&&h!==f&&(m=t.slice||t.webkitSlice,t=m.call(t,0,t.size,f),O=!0),a&&"download"!==u&&(u+=".download"),(h===f||a)&&(y=e),c?(s+=t.size,void c(e.TEMPORARY,s,g(function(e){e.root.getDirectory("saved",E,g(function(e){var n=function(){e.getFile(u,E,g(function(e){e.createWriter(g(function(n){n.onwriteend=function(t){y.location.href=e.toURL(),S.readyState=S.DONE,v(S,"writeend",t),l(e)},n.onerror=function(){var e=n.error;e.code!==e.ABORT_ERR&&b()},"writestart progress write abort".split(" ").forEach(function(e){n["on"+e]=S["on"+e]}),n.write(t),S.abort=function(){n.abort(),S.readyState=S.DONE},S.readyState=S.WRITING}),b)}),b)};e.getFile(u,{create:!1},g(function(e){e.remove(),n()}),g(function(e){e.code===e.NOT_FOUND_ERR?n():b()}))}),b)}),b)):void b())},y=w.prototype,m=function(e,t,n){return new w(e,t,n)};return"undefined"!=typeof navigator&&navigator.msSaveOrOpenBlob?function(e,t,n){return n||(e=p(e)),navigator.msSaveOrOpenBlob(e,t||"download")}:(y.abort=function(){var e=this;e.readyState=e.DONE,v(e,"abort")},y.readyState=y.INIT=0,y.WRITING=1,y.DONE=2,y.error=y.onwritestart=y.onprogress=y.onwrite=y.onabort=y.onerror=y.onwriteend=null,m)}}("undefined"!=typeof self&&self||"undefined"!=typeof window&&window||this.content);"undefined"!=typeof module&&module.exports?module.exports.saveAs=saveAs:"undefined"!=typeof define&&null!==define&&null!=define.amd&&define([],function(){return saveAs});
+var saveAs=saveAs||function(e){"use strict";if(typeof navigator!=="undefined"&&/MSIE [1-9]\./.test(navigator.userAgent)){return}var t=e.document,n=function(){return e.URL||e.webkitURL||e},r=t.createElementNS("http://www.w3.org/1999/xhtml","a"),i="download"in r,o=function(e){var t=new MouseEvent("click");e.dispatchEvent(t)},a=/Version\/[\d\.]+.*Safari/.test(navigator.userAgent),f=e.webkitRequestFileSystem,u=e.requestFileSystem||f||e.mozRequestFileSystem,s=function(t){(e.setImmediate||e.setTimeout)(function(){throw t},0)},c="application/octet-stream",d=0,l=500,w=function(t){var r=function(){if(typeof t==="string"){n().revokeObjectURL(t)}else{t.remove()}};if(e.chrome){r()}else{setTimeout(r,l)}},p=function(e,t,n){t=[].concat(t);var r=t.length;while(r--){var i=e["on"+t[r]];if(typeof i==="function"){try{i.call(e,n||e)}catch(o){s(o)}}}},v=function(e){if(/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type)){return new Blob(["\ufeff",e],{type:e.type})}return e},y=function(t,s,l){if(!l){t=v(t)}var y=this,m=t.type,S=false,h,R,O=function(){p(y,"writestart progress write writeend".split(" "))},g=function(){if(R&&a&&typeof FileReader!=="undefined"){var r=new FileReader;r.onloadend=function(){var e=r.result;R.location.href="data:attachment/file"+e.slice(e.search(/[,;]/));y.readyState=y.DONE;O()};r.readAsDataURL(t);y.readyState=y.INIT;return}if(S||!h){h=n().createObjectURL(t)}if(R){R.location.href=h}else{var i=e.open(h,"_blank");if(i==undefined&&a){e.location.href=h}}y.readyState=y.DONE;O();w(h)},b=function(e){return function(){if(y.readyState!==y.DONE){return e.apply(this,arguments)}}},E={create:true,exclusive:false},N;y.readyState=y.INIT;if(!s){s="download"}if(i){h=n().createObjectURL(t);r.href=h;r.download=s;setTimeout(function(){o(r);O();w(h);y.readyState=y.DONE});return}if(e.chrome&&m&&m!==c){N=t.slice||t.webkitSlice;t=N.call(t,0,t.size,c);S=true}if(f&&s!=="download"){s+=".download"}if(m===c||f){R=e}if(!u){g();return}d+=t.size;u(e.TEMPORARY,d,b(function(e){e.root.getDirectory("saved",E,b(function(e){var n=function(){e.getFile(s,E,b(function(e){e.createWriter(b(function(n){n.onwriteend=function(t){R.location.href=e.toURL();y.readyState=y.DONE;p(y,"writeend",t);w(e)};n.onerror=function(){var e=n.error;if(e.code!==e.ABORT_ERR){g()}};"writestart progress write abort".split(" ").forEach(function(e){n["on"+e]=y["on"+e]});n.write(t);y.abort=function(){n.abort();y.readyState=y.DONE};y.readyState=y.WRITING}),g)}),g)};e.getFile(s,{create:false},b(function(e){e.remove();n()}),b(function(e){if(e.code===e.NOT_FOUND_ERR){n()}else{g()}}))}),g)}),g)},m=y.prototype,S=function(e,t,n){return new y(e,t,n)};if(typeof navigator!=="undefined"&&navigator.msSaveOrOpenBlob){return function(e,t,n){if(!n){e=v(e)}return navigator.msSaveOrOpenBlob(e,t||"download")}}m.abort=function(){var e=this;e.readyState=e.DONE;p(e,"abort")};m.readyState=m.INIT=0;m.WRITING=1;m.DONE=2;m.error=m.onwritestart=m.onprogress=m.onwrite=m.onabort=m.onerror=m.onwriteend=null;return S}(typeof self!=="undefined"&&self||typeof window!=="undefined"&&window||this.content);if(typeof module!=="undefined"&&module.exports){module.exports.saveAs=saveAs}else if(typeof define!=="undefined"&&define!==null&&define.amd!=null){define([],function(){return saveAs})}
 </script>
+<script src="components/react-simpletabs/dist/react-simpletabs.min.js"></script>
 <script type="text/javascript">
-"use strict";function inArray(e,t){return e.filter(function(e){return e.repo_owner_username===t.repo_owner_username&&e.name===t.name}).length>0}function doASearch(e){if(e.state.searchText.length>=3){var t=e.state.searchCount+1;e.setState({searchCount:t}),e.setState({loading:!0}),search(e.state.searchText,e.state.shed.url,function(a){if(e.state.searchCount==t){var n=[];a.map(function(t){e.state.added.filter(function(e){t.id==e.id&&(t.added=!0)}),n.push(t)}),e.setState({found:n}),e.setState({loading:!1})}else console.log("not returning the results of this search")})}}function search(e,t,a){var n=t+e+"&jsonp=true";currentSearch&&currentSearch.abort(),currentSearch=$.ajax({type:"GET",url:n,crossDomain:!0,dataType:"jsonp",success:function(e){var t=[];e.hits.map(function(e){inArray(t,e.repository)||t.push(e.repository)}),a(t)}})}function uniq_fast(e){for(var t={},a=[],n=e.length,r=0,s=0;n>s;s++){var c=e[s];1!==t[c]&&(t[c]=1,a[r++]=c)}return a}function fillSearchResults(e){searchResultsDiv.empty(),e.map(function(e){searchResultsDiv.append("<p>"+e.name+"</p>"),searchResultsDiv.append(e.name)})}function isEvenNumber(e){return isNumber(e)&&e%2==0}function isNumber(e){return e==parseFloat(e)}function generateDockerFile(e){var t="";t+="FROM "+e.baseimage+"\n\n",t+="MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n",t+='ENV GALAXY_CONFIG_BRAND "'+e.GALAXY_CONFIG_BRAND+'"\n\n',t+="WORKDIR /galaxy-central\n\n";var a="",n=e.shed.uri;if(e.added.length>=1){a+="RUN install-repository \\ \n";var r=0;e.added.forEach(function(t){r++;var s="\\";r==e.added.length&&(s=""),a+='    "--url '+n+" -o "+t.repo_owner_username+" --name "+t.name+'" '+s+"\n"})}t+=a+"\n",t+='VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\n',t+="EXPOSE :80\n",t+="EXPOSE :21\n",t+="EXPOSE :8080\n\n",t+='CMD ["/usr/bin/startup"]\n',downloadString(t,"Dockerfile")}function downloadString(e,t){var a=new Blob([e]);saveAs(a,t)}var sheds=[{name:"Main ToolShed",shortName:"main",uri:"https://toolshed.g2.bx.psu.edu/",url:"https://toolshed.g2.bx.psu.edu/api/repositories?q="}],RepositoriesFound=React.createClass({displayName:"RepositoriesFound",render:function(){var e=this.props.found.length>0?"border":"";return React.createElement("ul",{className:e},this.props.found.map(function(e,t){var a=isEvenNumber(t)?"":"zebra",n=e.description,r="";return e.added?React.createElement("li",{className:a,"data-tooltip":n},React.createElement("span",null,e.name),React.createElement("div",{className:"button-block"},React.createElement("span",{className:"button thin right disabled"},"Added"))):(e.remote_repository_url&&e.remote_repository_url.length>0&&(r=React.createElement("a",{href:e.remote_repository_url,target:"_blank",className:"button primary thin right"},"Source Code")),React.createElement("li",{className:a,"data-tooltip":n},React.createElement("span",null,e.name),React.createElement("div",{className:"button-block"},React.createElement("button",{className:"success thin right",onClick:this.props.addToAdded.bind(this,e)},"Add"),r)))},this))}}),SearchInput=React.createClass({displayName:"SearchInput",render:function(){for(var e=[],t=0;t<sheds.length;t++)e.push(React.createElement("option",{value:t},sheds[t].name));return React.createElement("div",{className:"row squish"},React.createElement("div",{className:"col8"},React.createElement("input",{type:"text",key:"searchBox",onChange:this.props.onSearchChange,min:"3"})),React.createElement("div",{className:"col4"},React.createElement("select",{onChange:this.props.changeShed},e)))}}),Loading=React.createClass({displayName:"Loading",render:function(){var e=this.props.loading?"sk-fading-circle":"";return React.createElement("div",{className:e},React.createElement("div",{className:"sk-circle1 sk-circle"}),React.createElement("div",{className:"sk-circle2 sk-circle"}),React.createElement("div",{className:"sk-circle3 sk-circle"}),React.createElement("div",{className:"sk-circle4 sk-circle"}),React.createElement("div",{className:"sk-circle5 sk-circle"}),React.createElement("div",{className:"sk-circle6 sk-circle"}),React.createElement("div",{className:"sk-circle7 sk-circle"}),React.createElement("div",{className:"sk-circle8 sk-circle"}),React.createElement("div",{className:"sk-circle9 sk-circle"}),React.createElement("div",{className:"sk-circle10 sk-circle"}),React.createElement("div",{className:"sk-circle11 sk-circle"}),React.createElement("div",{className:"sk-circle12 sk-circle"}))}}),RepositoriessList=React.createClass({displayName:"RepositoriessList",render:function(){var e=this.props.added.length>0?"border":"",t=this;return React.createElement("ul",{className:e},this.props.added.map(function(e,a){var n=isEvenNumber(a)?"":"zebra";return React.createElement("li",{className:n},React.createElement("span",null,e.name),React.createElement("div",{className:"button-block"},React.createElement("button",{className:"error thin right",onClick:t.props.removeFromAdded.bind(this,e)},"Remove"),React.createElement("div",{className:"shed-badge"},e.shed.shortName)))}))}}),FlavorApp=React.createClass({displayName:"FlavorApp",getInitialState:function(){return{added:[],found:[],loading:!1,searchText:"",shed:sheds[0],searchCount:0,GALAXY_CONFIG_BRAND:"Galaxy",images:[],baseimage:"bgruening/galaxy-stable"}},loadImages:function(){var e="http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json";$.ajax({url:e,dataType:"json",success:function(e){console.log(e),this.setState({images:e})}.bind(this),error:function(e,t,a){console.error(this.props.url,t,a.toString())}.bind(this)})},componentDidMount:function(){this.loadImages()},imageChange:function(e){console.log("State changed to "+e.target.value),this.setState({baseimage:e.target.value||null})},onSearchChange:function(e){this.setState({searchText:e.target.value}),doASearch(this)},addToAdded:function(e){var t=this.state.added.filter(function(t){return t.repo_owner_username===e.repo_owner_username&&t.name===e.name}).length>0;if(!t){var a=this.state.added.concat([e]),n=this,r=[];this.state.found.map(function(t){t.repo_owner_username===e.repo_owner_username&&t.name===e.name&&(t.added=!0),t.shed=n.state.shed,r.push(t)}),this.setState({added:a,found:r})}},changeBrand:function(e){console.log(e.target.value);var t=e.target.value;t.length>0&&this.setState({GALAXY_CONFIG_BRAND:t})},changeShed:function(e){var t=sheds[parseInt(e.target.value)];this.setState({shed:t}),doASearch(this)},removeFromAdded:function(e){var t=this.state.added.filter(function(t){return e!=t}),a=[];this.state.found.map(function(t){t.repo_owner_username===e.repo_owner_username&&t.name===e.name&&(t.added=!1),a.push(t)}),this.setState({added:t,found:a})},render:function(){var e="hidden";this.state.added.length>0&&(e="");var t=this.state.images.map(function(e){return React.createElement("option",{value:e.name},e.name)});return React.createElement("div",{className:"container"},React.createElement("h2",null,"Please add repositories you would like to have in your Galaxy"),React.createElement("div",{id:"search"},React.createElement(SearchInput,{onSearchChange:this.onSearchChange,changeShed:this.changeShed}),React.createElement(Loading,{loading:this.state.loading,key:"loading"}),React.createElement(RepositoriesFound,{found:this.state.found,addToAdded:this.addToAdded,key:"repositoriesFound"})),React.createElement("hr",null),React.createElement("h3",null,"Config"),React.createElement("div",{className:"row"},React.createElement("div",{className:"col12"},React.createElement("div",null,React.createElement("label",null,"Base galaxy image:"),React.createElement("select",{onChange:this.imageChange},t)),React.createElement("label",null,"GALAXY_CONFIG_BRAND"),React.createElement("input",{type:"text",placeholder:"Galaxy",onChange:this.changeBrand}),React.createElement("label",null,"Galaxy release"),React.createElement("select",null,React.createElement("option",null,"15.05")))),React.createElement("hr",null),React.createElement("div",{className:e},React.createElement("div",{className:"row"},React.createElement("div",{className:"col12"},React.createElement("h3",{className:"no-margin-top"},"Your Galaxy will have the following:")))),React.createElement("div",{className:"row"},React.createElement("div",{className:"col8"},React.createElement("div",{id:"repositories-added"},React.createElement(RepositoriessList,{added:this.state.added,removeFromAdded:this.removeFromAdded}))),React.createElement("div",{className:"col4"},React.createElement("button",{className:"button full-width",onClick:generateDockerFile.bind(this,this.state)},"Give me a Docker"),React.createElement("button",{className:"button full-width",disabled:!0},"Give me a VM"),React.createElement("button",{className:"button full-width",disabled:!0},"Give me a Cloud"))))}});React.render(React.createElement(FlavorApp,null),document.getElementById("app"));var searchResultsDiv=$("#search-results"),currentSearch;$("#search-input").on("input",function(){var e=$(this).val();search(e)});
+"use strict";function inArray(e,t){return e.filter(function(e){return e.repo_owner_username===t.repo_owner_username&&e.name===t.name}).length>0}function doASearch(e){if(e.state.searchText.length>=3){var t=e.state.searchCount+1;e.setState({searchCount:t}),e.setState({loading:!0}),search(e.state.searchText,e.state.shed.url,function(a){if(e.state.searchCount==t){var n=[];a.map(function(t){e.state.added.filter(function(e){t.id==e.id&&(t.added=!0)}),n.push(t)}),e.setState({found:n}),e.setState({loading:!1})}else console.log("not returning the results of this search")})}}function search(e,t,a){var n=t+e+"&jsonp=true";currentSearch&&currentSearch.abort(),currentSearch=$.ajax({type:"GET",url:n,crossDomain:!0,dataType:"jsonp",success:function(e){var t=[];e.hits.map(function(e){inArray(t,e.repository)||t.push(e.repository)}),a(t)}})}function uniq_fast(e){for(var t={},a=[],n=e.length,r=0,s=0;n>s;s++){var c=e[s];1!==t[c]&&(t[c]=1,a[r++]=c)}return a}function fillSearchResults(e){searchResultsDiv.empty(),e.map(function(e){searchResultsDiv.append("<p>"+e.name+"</p>"),searchResultsDiv.append(e.name)})}function isEvenNumber(e){return isNumber(e)&&e%2==0}function isNumber(e){return e==parseFloat(e)}function generateDockerFile(e){var t="";t+="FROM "+e.baseimage+"\n\n",t+="MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n",t+='ENV GALAXY_CONFIG_BRAND "'+e.GALAXY_CONFIG_BRAND+'"\n\n',t+="WORKDIR /galaxy-central\n\n";var a="",n=e.shed.uri;if(e.added.length>=1){a+="RUN install-repository \\ \n";var r=0;e.added.forEach(function(t){r++;var s="\\";r==e.added.length&&(s=""),a+='    "--url '+n+" -o "+t.repo_owner_username+" --name "+t.name+'" '+s+"\n"})}t+=a+"\n",t+='VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\n',t+="EXPOSE :80\n",t+="EXPOSE :21\n",t+="EXPOSE :8080\n\n",t+='CMD ["/usr/bin/startup"]\n',downloadString(t,"Dockerfile")}function downloadString(e,t){var a=new Blob([e]);saveAs(a,t)}var sheds=[{name:"Main ToolShed",shortName:"main",uri:"https://toolshed.g2.bx.psu.edu/",url:"https://toolshed.g2.bx.psu.edu/api/repositories?q="}],RepositoriesFound=React.createClass({displayName:"RepositoriesFound",render:function(){var e=this.props.found.length>0?"border":"";return React.createElement("ul",{className:e},this.props.found.map(function(e,t){var a=isEvenNumber(t)?"":"zebra",n=e.description,r="";return e.added?React.createElement("li",{className:a,"data-tooltip":n},React.createElement("span",null,e.name),React.createElement("div",{className:"button-block"},React.createElement("span",{className:"button thin right disabled"},"Added"))):(e.remote_repository_url&&e.remote_repository_url.length>0&&(r=React.createElement("a",{href:e.remote_repository_url,target:"_blank",className:"button primary thin right"},"Source Code")),React.createElement("li",{className:a,"data-tooltip":n},React.createElement("span",null,e.name),React.createElement("div",{className:"button-block"},React.createElement("button",{className:"success thin right",onClick:this.props.addToAdded.bind(this,e)},"Add"),r)))},this))}}),SearchInput=React.createClass({displayName:"SearchInput",render:function(){for(var e=[],t=0;t<sheds.length;t++)e.push(React.createElement("option",{value:t},sheds[t].name));return React.createElement("div",{className:"row squish"},React.createElement("div",{className:"col8"},React.createElement("input",{type:"text",key:"searchBox",onChange:this.props.onSearchChange,min:"3"})),React.createElement("div",{className:"col4"},React.createElement("select",{onChange:this.props.changeShed},e)))}}),Loading=React.createClass({displayName:"Loading",render:function(){var e=this.props.loading?"sk-fading-circle":"";return React.createElement("div",{className:e},React.createElement("div",{className:"sk-circle1 sk-circle"}),React.createElement("div",{className:"sk-circle2 sk-circle"}),React.createElement("div",{className:"sk-circle3 sk-circle"}),React.createElement("div",{className:"sk-circle4 sk-circle"}),React.createElement("div",{className:"sk-circle5 sk-circle"}),React.createElement("div",{className:"sk-circle6 sk-circle"}),React.createElement("div",{className:"sk-circle7 sk-circle"}),React.createElement("div",{className:"sk-circle8 sk-circle"}),React.createElement("div",{className:"sk-circle9 sk-circle"}),React.createElement("div",{className:"sk-circle10 sk-circle"}),React.createElement("div",{className:"sk-circle11 sk-circle"}),React.createElement("div",{className:"sk-circle12 sk-circle"}))}}),RepositoriessList=React.createClass({displayName:"RepositoriessList",render:function(){var e=this.props.added.length>0?"border":"",t=this;return React.createElement("ul",{className:e},this.props.added.map(function(e,a){var n=isEvenNumber(a)?"":"zebra";return React.createElement("li",{className:n},React.createElement("span",null,e.name),React.createElement("div",{className:"button-block"},React.createElement("button",{className:"error thin right",onClick:t.props.removeFromAdded.bind(this,e)},"Remove"),React.createElement("div",{className:"shed-badge"},e.shed.shortName)))}))}}),FlavorApp=React.createClass({displayName:"FlavorApp",getInitialState:function(){return{added:[],found:[],loading:!1,searchText:"",shed:sheds[0],searchCount:0,GALAXY_CONFIG_BRAND:"Galaxy",images:[],baseimage:"bgruening/galaxy-stable"}},loadImages:function(){var e="http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json";$.ajax({url:e,dataType:"json",success:function(e){this.setState({images:e})}.bind(this),error:function(e,t,a){console.error(this.props.url,t,a.toString())}.bind(this)})},componentDidMount:function(){this.loadImages()},imageChange:function(e){console.log("State changed to "+e.target.value),this.setState({baseimage:e.target.value||null})},onSearchChange:function(e){this.setState({searchText:e.target.value}),doASearch(this)},addToAdded:function(e){var t=this.state.added.filter(function(t){return t.repo_owner_username===e.repo_owner_username&&t.name===e.name}).length>0;if(!t){var a=this.state.added.concat([e]),n=this,r=[];this.state.found.map(function(t){t.repo_owner_username===e.repo_owner_username&&t.name===e.name&&(t.added=!0),t.shed=n.state.shed,r.push(t)}),this.setState({added:a,found:r})}},changeBrand:function(e){console.log(e.target.value);var t=e.target.value;t.length>0&&this.setState({GALAXY_CONFIG_BRAND:t})},changeShed:function(e){var t=sheds[parseInt(e.target.value)];this.setState({shed:t}),doASearch(this)},removeFromAdded:function(e){var t=this.state.added.filter(function(t){return e!=t}),a=[];this.state.found.map(function(t){t.repo_owner_username===e.repo_owner_username&&t.name===e.name&&(t.added=!1),a.push(t)}),this.setState({added:t,found:a})},render:function(){var e="hidden";this.state.added.length>0&&(e="");var t=this.state.images.map(function(e){return React.createElement("option",{value:e.name},e.name)});return React.createElement("div",{className:"container"},React.createElement("h2",null,"Please add repositories you would like to have in your Galaxy"),React.createElement("div",{id:"search"},React.createElement(SearchInput,{onSearchChange:this.onSearchChange,changeShed:this.changeShed}),React.createElement(Loading,{loading:this.state.loading,key:"loading"}),React.createElement(RepositoriesFound,{found:this.state.found,addToAdded:this.addToAdded,key:"repositoriesFound"})),React.createElement("hr",null),React.createElement("h3",null,"Config"),React.createElement("div",{className:"row"},React.createElement("div",{className:"col12"},React.createElement("div",null,React.createElement("label",null,"Base galaxy image:"),React.createElement("select",{onChange:this.imageChange},t)),React.createElement("label",null,"GALAXY_CONFIG_BRAND"),React.createElement("input",{type:"text",placeholder:"Galaxy",onChange:this.changeBrand}),React.createElement("label",null,"Galaxy release"),React.createElement("select",null,React.createElement("option",null,"15.05")))),React.createElement("hr",null),React.createElement("div",{className:e},React.createElement("div",{className:"row"},React.createElement("div",{className:"col12"},React.createElement("h3",{className:"no-margin-top"},"Your Galaxy will have the following:")))),React.createElement("div",{className:"row"},React.createElement("div",{className:"col8"},React.createElement("div",{id:"repositories-added"},React.createElement(RepositoriessList,{added:this.state.added,removeFromAdded:this.removeFromAdded}))),React.createElement("div",{className:"col4"},React.createElement("button",{className:"button full-width",onClick:generateDockerFile.bind(this,this.state)},"Give me a Docker"),React.createElement("button",{className:"button full-width",disabled:!0},"Give me a VM"),React.createElement("button",{className:"button full-width",disabled:!0},"Give me a Cloud"))))}});React.render(React.createElement(FlavorApp,null),document.getElementById("app"));var searchResultsDiv=$("#search-results"),currentSearch;$("#search-input").on("input",function(){var e=$(this).val();search(e)});
 </script>
 
 <script type="text/jsx">

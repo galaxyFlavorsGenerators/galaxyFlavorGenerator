@@ -1,5 +1,5 @@
 'use strict';
-
+var Tabs = ReactSimpleTabs;
 var sheds = [{
   name: 'Main ToolShed',
   shortName: 'main',
@@ -13,6 +13,119 @@ var sheds = [{
 //            uri: 'https://testtoolshed.g2.bx.psu.edu/',
 //            url: 'https://testtoolshed.g2.bx.psu.edu/api/repositories?q='
 //        }
+var BioJs = React.createClass({
+  displayName: 'BioJs',
+
+  render: function render() {
+    var className = this.props.biojs.length > 0 ? 'border' : '';
+    return React.createElement(
+      'div',
+      { className: 'border' },
+      React.createElement(
+        'ul',
+        { classname: className },
+        this.props.biojs.map(function (item, i) {
+          var zebra = isEvenNumber(i) ? '' : 'zebra';
+          var thisclick = this.props.addToAdded.bind(this, item);
+          var toolTipText = item.key[2];
+          if (item.added) {
+            return React.createElement(
+              'li',
+              { classname: zebra, 'data-tooltip': toolTipText },
+              React.createElement(
+                'span',
+                null,
+                item.key[1]
+              ),
+              React.createElement(
+                'div',
+                { className: 'button-block' },
+                React.createElement(
+                  'span',
+                  { className: 'button thin right disabled' },
+                  'Added'
+                )
+              )
+            );
+          } else {
+
+            var biojslink = "http://biojs.io/d/" + item.key[1];
+            var repoButton = React.createElement(
+              'a',
+              { href: biojslink, target: '_blank',
+                className: 'button primary thin right' },
+              'biojs.io'
+            );
+            return React.createElement(
+              'li',
+              { className: zebra, 'data-tooltip': toolTipText },
+              React.createElement(
+                'span',
+                null,
+                item.key[1]
+              ),
+              React.createElement(
+                'div',
+                { className: 'button-block' },
+                React.createElement(
+                  'button',
+                  { className: 'success thin right',
+                    onClick: this.props.addToAdded.bind(this, item) },
+                  'Add'
+                ),
+                repoButton
+              )
+            );
+          }
+        }, this)
+      )
+    );
+  }
+});
+
+var Vislist = React.createClass({
+  displayName: 'Vislist',
+
+  render: function render() {
+    var className = this.props.biojslist.length > 0 ? 'border' : '';
+    var self = this;
+    //console.log("rendering: ");
+    //console.log(this.props.biojslist);
+    return React.createElement(
+      'ul',
+      { className: className },
+      this.props.biojslist.map(function (item, i) {
+        var zebra = isEvenNumber(i) ? '' : 'zebra';
+        //                        console.log(item);
+        return React.createElement(
+          'li',
+          { className: zebra },
+          React.createElement(
+            'span',
+            null,
+            item.key[1]
+          ),
+          React.createElement(
+            'div',
+            { className: 'button-block' },
+            React.createElement(
+              'button',
+              { className: 'error thin right',
+                onClick: self.props.removeFromAdded.bind(this, item) },
+              'Remove'
+            ),
+            React.createElement(
+              'div',
+              { className: 'shed-badge' },
+              item.key[1]
+            )
+          )
+        );
+      })
+    );
+  }
+});
+
 var RepositoriesFound = React.createClass({
   displayName: 'RepositoriesFound',
 
@@ -184,12 +297,14 @@ var FlavorApp = React.createClass({
     return {
       added: [],
       found: [],
+      biojslist: [],
       loading: false,
       searchText: '',
       shed: sheds[0],
       searchCount: 0,
       GALAXY_CONFIG_BRAND: 'Galaxy',
       images: [],
+      biojs: [],
       baseimage: 'bgruening/galaxy-stable'
     };
   },
@@ -207,8 +322,25 @@ var FlavorApp = React.createClass({
       }).bind(this)
     });
   },
+  loadBiojs: function loadBiojs() {
+    // TODO: on deployment server cronjob => curl --globoff 'https://registry.npmjs.org/-/_view/byKeyword?startkey=["galaxy-vis"]&endkey=["galaxy-vis",{}]&group_level=3' inside resources/biojs.json
+    var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/biojs.json';
+    var correctURL = 'resources/biojs.json';
+    $.ajax({
+      url: tempURL,
+      dataType: 'json',
+      success: (function (data) {
+        this.setState({ biojs: data });
+        //console.log(this.state.biojs)
+      }).bind(this),
+      error: (function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }).bind(this)
+    });
+  },
   componentDidMount: function componentDidMount() {
     this.loadImages();
+    this.loadBiojs();
   },
   imageChange: function imageChange(newValue) {
     console.log('State changed to ' + newValue.target.value);
@@ -238,6 +370,30 @@ var FlavorApp = React.createClass({
         newFound.push(f);
       });
       this.setState({ added: newAdded, found: newFound });
+    }
+  },
+  addToVis: function addToVis(a) {
+    //console.log("adding: " + a.key[1]);
+    var exists = this.state.biojslist.filter(function (aa) {
+      return a.key[1] == aa.key[1];
+    }).length > 0;
+    if (!exists) {
+      var newAdded = this.state.biojslist.concat([a]);
+      //console.log("biojsvis: ");
+      //console.log(newAdded);
+      var self = this;
+      var newFound = [];
+      this.state.biojs.map(function (f) {
+
+        if (f.key[1] === a.key[1]) {
+          //                    if (f.id == a.id) {
+          f.added = true;
+        }
+        newFound.push(f);
+        //console.log(newFound);
+      });
+      this.setState({ biojslist: newAdded, biojs: newFound });
+      //console.log(this.state.biojslist);
     }
   },
   changeBrand: function changeBrand(e) {
@@ -270,10 +426,34 @@ var FlavorApp = React.createClass({
 
     this.setState({ added: newState, found: newFound });
   },
+  removeFromVis: function removeFromVis(a) {
+
+    var newState = this.state.biojslist.filter(function (aa) {
+      return a != aa;
+    });
+
+    var newFound = [];
+    this.state.biojs.map(function (f) {
+      //                if (f.id == a.id) {
+      if (f.key[1] === a.key[1]) {
+        f.added = false;
+      }
+      newFound.push(f);
+    });
+
+    this.setState({ biojslist: newState, biojs: newFound });
+  },
   render: function render() {
     var hiddenClass = 'hidden';
+    var hiddenClassbiojs = 'hidden';
+    var hiddenClassGeneral = 'hidden';
     if (this.state.added.length > 0) {
       hiddenClass = '';
+      hiddenClassGeneral = '';
+    }
+    if (this.state.biojslist.length > 0) {
+      hiddenClassbiojs = '';
+      hiddenClassGeneral = '';
     }
     var images = this.state.images.map(function (value) {
       return React.createElement(
@@ -286,17 +466,39 @@ var FlavorApp = React.createClass({
       'div',
       { className: 'container' },
       React.createElement(
-        'h2',
+        Tabs,
         null,
-        'Please add repositories you would like to have in your Galaxy'
-      ),
-      React.createElement(
-        'div',
-        { id: 'search' },
-        React.createElement(SearchInput, { onSearchChange: this.onSearchChange, changeShed: this.changeShed }),
-        React.createElement(Loading, { loading: this.state.loading, key: 'loading' }),
-        React.createElement(RepositoriesFound, { found: this.state.found, addToAdded: this.addToAdded,
-          key: 'repositoriesFound' })
+        React.createElement(
+          Tabs.Panel,
+          { title: 'Galaxy tools' },
+          React.createElement(
+            'h2',
+            null,
+            'Please add repositories you would like to have in your Galaxy'
+          ),
+          React.createElement(
+            'div',
+            { id: 'search' },
+            React.createElement(SearchInput, { onSearchChange: this.onSearchChange, changeShed: this.changeShed }),
+            React.createElement(Loading, { loading: this.state.loading, key: 'loading' }),
+            React.createElement(RepositoriesFound, { found: this.state.found, addToAdded: this.addToAdded,
+              key: 'repositoriesFound' })
+          )
+        ),
+        React.createElement(
+          Tabs.Panel,
+          { title: 'BioJS visualisations' },
+          React.createElement(
+            'div',
+            { id: 'BioJs' },
+            React.createElement(
+              'h2',
+              null,
+              'Please add visualisations you would like to have in your Galaxy'
+            ),
+            React.createElement(BioJs, { biojs: this.state.biojs, addToAdded: this.addToVis })
+          )
+        )
       ),
       React.createElement('hr', null),
       React.createElement(
@@ -349,7 +551,7 @@ var FlavorApp = React.createClass({
       React.createElement('hr', null),
       React.createElement(
         'div',
-        { className: hiddenClass },
+        { className: hiddenClassGeneral },
         React.createElement(
           'div',
           { className: 'row' },
@@ -362,39 +564,63 @@ var FlavorApp = React.createClass({
               'Your Galaxy will have the following:'
             )
           )
-        )
-      ),
-      React.createElement(
-        'div',
-        { className: 'row' },
-        React.createElement(
-          'div',
-          { className: 'col8' },
-          React.createElement(
-            'div',
-            { id: 'repositories-added' },
-            React.createElement(RepositoriessList, { added: this.state.added,
-              removeFromAdded: this.removeFromAdded })
-          )
         ),
         React.createElement(
           'div',
-          { className: 'col4' },
+          { className: 'row' },
           React.createElement(
-            'button',
-            { className: 'button full-width',
-              onClick: generateDockerFile.bind(this, this.state) },
-            'Give me a Docker'
+            'div',
+            { className: 'col8' },
+            React.createElement(
+              'div',
+              { className: hiddenClass },
+              React.createElement(
+                'div',
+                { id: 'repositories-added' },
+                React.createElement(
+                  'h5',
+                  null,
+                  'Galaxy tools'
+                ),
+                React.createElement(RepositoriessList, { added: this.state.added,
+                  removeFromAdded: this.removeFromAdded })
+              )
+            ),
+            React.createElement(
+              'div',
+              { className: hiddenClassbiojs },
+              React.createElement(
+                'div',
+                { id: 'repositories-added' },
+                React.createElement(
+                  'h5',
+                  null,
+                  'BioJS visualisations'
+                ),
+                React.createElement(Vislist, { biojslist: this.state.biojslist,
+                  removeFromAdded: this.removeFromVis })
+              )
+            )
           ),
           React.createElement(
-            'button',
-            { className: 'button full-width', disabled: true },
-            'Give me a VM'
-          ),
-          React.createElement(
-            'button',
-            { className: 'button full-width', disabled: true },
-            'Give me a Cloud'
+            'div',
+            { className: 'col4' },
+            React.createElement(
+              'button',
+              { className: 'button full-width',
+                onClick: generateDockerFile.bind(this, this.state) },
+              'Give me a Docker'
+            ),
+            React.createElement(
+              'button',
+              { className: 'button full-width', disabled: true },
+              'Give me a VM'
+            ),
+            React.createElement(
+              'button',
+              { className: 'button full-width', disabled: true },
+              'Give me a Cloud'
+            )
           )
         )
       )
@@ -529,9 +755,16 @@ function generateDockerFile(state) {
     });
   }
 
-
   DockerFile += repositories + '\n';
-
+  var biojs = '';
+  if (state.biojslist.length > 0){
+    biojs += 'RUN install-biojs ';
+    state.biojslist.forEach(function (a){
+      biojs += a.key[1] + ' ';
+    });
+    biojs += "\n";
+  }
+  DockerFile += biojs + '\n\n';
   DockerFile += 'VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\n';
 
   DockerFile += 'EXPOSE :80\n';
