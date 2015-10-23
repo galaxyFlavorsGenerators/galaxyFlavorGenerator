@@ -127,8 +127,7 @@ function generateDockerFile(state) {
   DockerFile += repositories + '\n';
   var biojs = '';
   if (state.biojslist.length > 0){
-    biojs += "RUN npm install -g install-biojs \n";
-    biojs += 'RUN biojs2galaxy ';
+    biojs += 'RUN install-biojs biojs2galaxy ';
     state.biojslist.forEach(function (a){
       biojs += a.key[1] + ' ';
     });
