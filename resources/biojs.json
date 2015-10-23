@@ -1,0 +1,34 @@
+[
+  {
+    "key": [
+      "galaxy-vis",
+      "biojs-vis-sequence",
+      "Display sequence"
+    ],
+    "value": 1
+  },
+  {
+    "key": [
+      "galaxy-vis",
+      "drawrnajs",
+      "Visualizes RNA secondary structures."
+    ],
+    "value": 1
+  },
+  {
+    "key": [
+      "galaxy-vis",
+      "exelixis-galaxy",
+      "Interactive phylogenetic tree viewer for the web"
+    ],
+    "value": 1
+  },
+  {
+    "key": [
+      "galaxy-vis",
+      "msa",
+      "Display multiple sequences"
+    ],
+    "value": 1
+  }
+]

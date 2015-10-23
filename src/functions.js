@@ -124,9 +124,17 @@ function generateDockerFile(state) {
     });
   }
 
-
   DockerFile += repositories + '\n';
-
+  var biojs = '';
+  if (state.biojslist.length > 0){
+    biojs += "RUN npm install -g install-biojs \n";
+    biojs += 'RUN biojs2galaxy ';
+    state.biojslist.forEach(function (a){
+      biojs += a.key[1] + ' ';
+    });
+    biojs += "\n";
+  }
+  DockerFile += biojs + '\n\n';
   DockerFile += 'VOLUME ["/export/", "/data/", "/var/lib/docker"]\n\n';
 
   DockerFile += 'EXPOSE :80\n';
