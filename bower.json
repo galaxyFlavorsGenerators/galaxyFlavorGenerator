@@ -17,7 +17,8 @@
     "terrier": "*",
     "jquery": "~2.1.4",
     "react": "~0.13.3",
-    "FileSaver": "*"
+    "FileSaver": "*",
+    "react-simpletabs": "*"
   },
   "homepage": "https://github.com/wookoouk/galaxyFlavorGenerator",
   "description": "Customise and Generate Galaxy server images",
