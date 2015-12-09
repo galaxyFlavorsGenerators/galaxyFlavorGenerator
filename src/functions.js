@@ -40,7 +40,6 @@ function search(query, shed, cb) {
   var fullURL = shed + query + '&jsonp=true';
   if (currentSearch) {
     currentSearch.abort();
-    //console.log('aborted');
   }
   currentSearch = $.ajax({
     type: 'GET',
@@ -54,7 +53,6 @@ function search(query, shed, cb) {
           results.push(hit.repository);
         }
       });
-      //console.log(JSON.stringify(results));
       cb(results);
     }
   })

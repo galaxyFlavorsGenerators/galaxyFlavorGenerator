@@ -26,51 +26,50 @@ var BioJs = React.createClass({
         { className: className },
         this.props.biojs.map(function (item, i) {
           var zebra = isEvenNumber(i) ? '' : 'zebra';
-          /*var thisclick =*/this.props.addToAdded.bind(this, item);
+          /*var thisclick =*/this.props.addToAdded.bind(null, item);
           var toolTipText = item.key[2];
           if (item.added) {
             return React.createElement(
               'li',
-              { classname: zebra, 'data-tooltip': toolTipText },
+              { className: zebra, 'data-tooltip': toolTipText, key: 'liz' + i },
               React.createElement(
                 'span',
-                null,
+                { key: 'spanner' + i },
                 item.key[1]
               ),
               React.createElement(
                 'div',
-                { className: 'button-block' },
+                { className: 'button-block', key: 'blockey' + i },
                 React.createElement(
                   'span',
-                  { className: 'button thin right disabled' },
+                  { key: 'spn' + i, className: 'button thin right disabled' },
                   'Added'
                 )
               )
             );
           } else {
-
             var biojslink = "http://biojs.io/d/" + item.key[1];
             var repoButton = React.createElement(
               'a',
               { href: biojslink, target: '_blank',
-                className: 'button primary thin right' },
+                className: 'button primary thin right', key: 'repob' + i },
               'biojs.io'
             );
             return React.createElement(
               'li',
-              { className: zebra, 'data-tooltip': toolTipText },
+              { className: zebra, 'data-tooltip': toolTipText, key: 'tt' + i },
               React.createElement(
                 'span',
-                null,
+                { key: 'ik' + i },
                 item.key[1]
               ),
               React.createElement(
                 'div',
-                { className: 'button-block' },
+                { className: 'button-block', key: 'bb' + i },
                 React.createElement(
                   'button',
-                  { className: 'success thin right',
-                    onClick: this.props.addToAdded.bind(this, item) },
+                  { key: 'suc' + i, className: 'success thin right',
+                    onClick: this.props.addToAdded.bind(null, item) },
                   'Add'
                 ),
                 repoButton
@@ -89,34 +88,31 @@ var Vislist = React.createClass({
   render: function render() {
     var className = this.props.biojslist.length > 0 ? 'border' : '';
     var self = this;
-    //console.log("rendering: ");
-    //console.log(this.props.biojslist);
     return React.createElement(
       'ul',
       { className: className },
       this.props.biojslist.map(function (item, i) {
         var zebra = isEvenNumber(i) ? '' : 'zebra';
-        //                        console.log(item);
         return React.createElement(
           'li',
-          { className: zebra },
+          { className: zebra, key: 'zeb' + i },
           React.createElement(
             'span',
-            null,
+            { key: 'span' + i },
             item.key[1]
           ),
           React.createElement(
             'div',
-            { className: 'button-block' },
+            { className: 'button-block', key: 'bb' + i },
             React.createElement(
               'button',
               { className: 'error thin right',
-                onClick: self.props.removeFromAdded.bind(this, item) },
+                onClick: self.props.removeFromAdded.bind(null, item), key: 'e' + i },
               'Remove'
             ),
             React.createElement(
               'div',
-              { className: 'shed-badge' },
+              { className: 'shed-badge', key: 'shed' + i },
               item.key[1]
             )
           )
@@ -131,6 +127,7 @@ var RepositoriesFound = React.createClass({
 
   render: function render() {
     var className = this.props.found.length > 0 ? 'border' : '';
+    var self = this;
     return React.createElement(
       'ul',
       { className: className },
@@ -141,18 +138,18 @@ var RepositoriesFound = React.createClass({
         if (item.added) {
           return React.createElement(
             'li',
-            { className: zebra, 'data-tooltip': toolTipText },
+            { className: zebra, 'data-tooltip': toolTipText, key: 'a' + i },
             React.createElement(
               'span',
-              null,
+              { key: 'span-{i}' },
               item.name
             ),
             React.createElement(
               'div',
-              { className: 'button-block' },
+              { className: 'button-block', key: 'b' + i },
               React.createElement(
                 'span',
-                { className: 'button thin right disabled' },
+                { className: 'button thin right disabled', key: 'c' + i },
                 'Added'
               )
             )
@@ -162,25 +159,25 @@ var RepositoriesFound = React.createClass({
             repoButton = React.createElement(
               'a',
               { href: item.remote_repository_url, target: '_blank',
-                className: 'button primary thin right' },
+                className: 'button primary thin right', key: 'd' + i },
               'Source Code'
             );
           }
           return React.createElement(
             'li',
-            { className: zebra, 'data-tooltip': toolTipText },
+            { className: zebra, 'data-tooltip': toolTipText, key: 'e' + i },
             React.createElement(
               'span',
-              null,
+              { key: 'f' + i },
               item.name
             ),
             React.createElement(
               'div',
-              { className: 'button-block' },
+              { className: 'button-block', key: 'g' + i },
               React.createElement(
                 'button',
-                { className: 'success thin right',
-                  onClick: this.props.addToAdded.bind(this, item) },
+                { className: ' success thin right',
+                  onClick: this.props.addToAdded.bind(null, item), key: 'h' + i },
                 'Add'
               ),
               repoButton
@@ -200,7 +197,7 @@ var SearchInput = React.createClass({
     for (var i = 0; i < sheds.length; i++) {
       options.push(React.createElement(
         'option',
-        { value: i },
+        { value: i, key: 'opt' + i },
         sheds[i].name
       ));
     }
@@ -261,27 +258,26 @@ var RepositoriessList = React.createClass({
       { className: className },
       this.props.added.map(function (item, i) {
         var zebra = isEvenNumber(i) ? '' : 'zebra';
-        //                        console.log(item);
         return React.createElement(
           'li',
-          { className: zebra },
+          { className: zebra, key: 'li' + i },
           React.createElement(
             'span',
-            null,
+            { key: 'sp' + i },
             item.name
           ),
           React.createElement(
             'div',
-            { className: 'button-block' },
+            { className: 'button-block', key: 'dv' + i },
             React.createElement(
               'button',
               { className: 'error thin right',
-                onClick: self.props.removeFromAdded.bind(this, item) },
+                onClick: self.props.removeFromAdded.bind(null, item), key: 'btn' + i },
               'Remove'
             ),
             React.createElement(
               'div',
-              { className: 'shed-badge' },
+              { className: 'shed-badge', key: 'badge' + i },
               item.shed.shortName
             )
           )
@@ -331,7 +327,6 @@ var FlavorApp = React.createClass({
       dataType: 'json',
       success: (function (data) {
         this.setState({ biojs: data });
-        //console.log(this.state.biojs)
       }).bind(this),
       error: (function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -363,7 +358,6 @@ var FlavorApp = React.createClass({
       this.state.found.map(function (f) {
 
         if (f.repo_owner_username === a.repo_owner_username && f.name === a.name) {
-          //                    if (f.id == a.id) {
           f.added = true;
         }
         f.shed = self.state.shed;
@@ -373,31 +367,23 @@ var FlavorApp = React.createClass({
     }
   },
   addToVis: function addToVis(a) {
-    //console.log("adding: " + a.key[1]);
     var exists = this.state.biojslist.filter(function (aa) {
       return a.key[1] == aa.key[1];
     }).length > 0;
     if (!exists) {
       var newAdded = this.state.biojslist.concat([a]);
-      //console.log("biojsvis: ");
-      //console.log(newAdded);
-      //var self = this;
       var newFound = [];
       this.state.biojs.map(function (f) {
 
         if (f.key[1] === a.key[1]) {
-          //                    if (f.id == a.id) {
           f.added = true;
         }
         newFound.push(f);
-        //console.log(newFound);
       });
       this.setState({ biojslist: newAdded, biojs: newFound });
-      //console.log(this.state.biojslist);
     }
   },
   changeBrand: function changeBrand(e) {
-    console.log(e.target.value);
     var newBrand = e.target.value;
     if (newBrand.length > 0) {
       this.setState({ GALAXY_CONFIG_BRAND: newBrand });
@@ -417,7 +403,6 @@ var FlavorApp = React.createClass({
 
     var newFound = [];
     this.state.found.map(function (f) {
-      //                if (f.id == a.id) {
       if (f.repo_owner_username === a.repo_owner_username && f.name === a.name) {
         f.added = false;
       }
@@ -434,7 +419,6 @@ var FlavorApp = React.createClass({
 
     var newFound = [];
     this.state.biojs.map(function (f) {
-      //                if (f.id == a.id) {
       if (f.key[1] === a.key[1]) {
         f.added = false;
       }
@@ -455,10 +439,12 @@ var FlavorApp = React.createClass({
       hiddenClassbiojs = '';
       hiddenClassGeneral = '';
     }
+    var i = 0;
     var images = this.state.images.map(function (value) {
+      i++;
       return React.createElement(
         'option',
-        { value: value.name },
+        { value: value.name, key: i },
         value.name
       );
     });
@@ -628,7 +614,7 @@ var FlavorApp = React.createClass({
   }
 });
 //RISE!!
-React.render(React.createElement(FlavorApp, null), document.getElementById("app"));
+ReactDOM.render(React.createElement(FlavorApp, null), document.getElementById("app"));
 'use strict';
 
 var searchResultsDiv = $('#search-results');
@@ -671,7 +657,6 @@ function search(query, shed, cb) {
   var fullURL = shed + query + '&jsonp=true';
   if (currentSearch) {
     currentSearch.abort();
-    //console.log('aborted');
   }
   currentSearch = $.ajax({
     type: 'GET',
@@ -685,7 +670,6 @@ function search(query, shed, cb) {
           results.push(hit.repository);
         }
       });
-      //console.log(JSON.stringify(results));
       cb(results);
     }
   })

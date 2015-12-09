@@ -23,31 +23,30 @@ var BioJs = React.createClass({
 
           {this.props.biojs.map(function (item, i) {
             var zebra = isEvenNumber(i) ? '' : 'zebra';
-            /*var thisclick =*/ this.props.addToAdded.bind(this, item);
+            /*var thisclick =*/ this.props.addToAdded.bind(null, item);
             var toolTipText = item.key[2];
             if (item.added) {
               return (
-              <li classname={zebra} data-tooltip={toolTipText}>
-                <span>{item.key[1]}</span>
+              <li className={zebra} data-tooltip={toolTipText} key={'liz'+i}>
+                <span key={'spanner'+i}>{item.key[1]}</span>
 
-                <div className="button-block">
-                                                <span className="button thin right disabled">Added
+                <div className="button-block" key={'blockey'+i}>
+                                                <span key={'spn'+i} className="button thin right disabled">Added
                                                 </span>
                 </div>
               </li>
                 );
               } else {
-
               var biojslink = "http://biojs.io/d/" + item.key[1];
               var repoButton = <a href={biojslink} target="_blank"
-                                  className="button primary thin right">biojs.io</a>;
+                                  className="button primary thin right" key={'repob'+i}>biojs.io</a>;
               return (
-              <li className={zebra} data-tooltip={toolTipText}>
-                <span>{item.key[1]}</span>
+              <li className={zebra} data-tooltip={toolTipText} key={'tt'+i}>
+                <span key={'ik'+i}>{item.key[1]}</span>
 
-                <div className="button-block">
-                  <button className="success thin right"
-                          onClick={this.props.addToAdded.bind(this, item)}>
+                <div className="button-block" key={'bb'+i}>
+                  <button key={'suc'+i} className="success thin right"
+                          onClick={this.props.addToAdded.bind(null, item)}>
                     Add
                   </button>
                   {repoButton}
@@ -69,21 +68,18 @@ var Vislist = React.createClass({
   render: function () {
     var className = this.props.biojslist.length > 0 ? 'border' : '';
     var self = this;
-    //console.log("rendering: ");
-    //console.log(this.props.biojslist);
     return (
       <ul className={className}>{this.props.biojslist.map(function (item, i) {
         var zebra = isEvenNumber(i) ? '' : 'zebra';
-        //                        console.log(item);
         return (
-        <li className={zebra}>
-          <span>{item.key[1]}</span>
+        <li className={zebra} key={'zeb'+i}>
+          <span key={'span'+i}>{item.key[1]}</span>
 
-          <div className="button-block">
+          <div className="button-block" key={'bb'+i}>
             <button className="error thin right"
-                    onClick={self.props.removeFromAdded.bind(this, item)}>Remove
+                    onClick={self.props.removeFromAdded.bind(null, item)} key={'e'+i}>Remove
             </button>
-            <div className="shed-badge">{item.key[1]}</div>
+            <div className="shed-badge" key={'shed'+i}>{item.key[1]}</div>
           </div>
         </li>
           )
@@ -96,6 +92,7 @@ var Vislist = React.createClass({
 var RepositoriesFound = React.createClass({
   render: function () {
     var className = this.props.found.length > 0 ? 'border' : '';
+    var self = this;
     return (
       <ul className={className}>
         {this.props.found.map(function (item, i) {
@@ -104,11 +101,11 @@ var RepositoriesFound = React.createClass({
           var repoButton = '';
           if (item.added) {
             return (
-            <li className={zebra} data-tooltip={toolTipText}>
-              <span>{item.name}</span>
+            <li className={zebra} data-tooltip={toolTipText} key={'a'+i}>
+              <span key="span-{i}">{item.name}</span>
 
-              <div className="button-block">
-                                                <span className="button thin right disabled">Added
+              <div className="button-block" key={'b'+i}>
+                                                <span className="button thin right disabled" key={'c'+i}>Added
                                                 </span>
               </div>
             </li>
@@ -116,16 +113,16 @@ var RepositoriesFound = React.createClass({
             } else {
             if (item.remote_repository_url && item.remote_repository_url.length > 0) {
               repoButton = <a href={item.remote_repository_url} target="_blank"
-                              className="button primary thin right">Source Code
+                              className="button primary thin right" key={'d'+i}>Source Code
               </a>
               }
             return (
-            <li className={zebra} data-tooltip={toolTipText}>
-              <span>{item.name}</span>
+            <li className={zebra} data-tooltip={toolTipText} key={'e'+i}>
+              <span key={'f'+i}>{item.name}</span>
 
-              <div className="button-block">
-                <button className="success thin right"
-                        onClick={this.props.addToAdded.bind(this, item)}>
+              <div className="button-block" key={'g'+i}>
+                <button className=" success thin right"
+                        onClick={this.props.addToAdded.bind(null, item)} key={'h'+i}>
                   Add
                 </button>
                 {repoButton}
@@ -143,7 +140,7 @@ var SearchInput = React.createClass({
   render: function () {
     var options = [];
     for (var i = 0; i < sheds.length; i++) {
-      options.push(<option value={i}>{sheds[i].name}</option>)
+      options.push(<option value={i} key={'opt'+i}>{sheds[i].name}</option>)
     }
 
     return (
@@ -190,16 +187,15 @@ var RepositoriessList = React.createClass({
     return (
       <ul className={className}>{this.props.added.map(function (item, i) {
         var zebra = isEvenNumber(i) ? '' : 'zebra';
-        //                        console.log(item);
         return (
-        <li className={zebra}>
-          <span>{item.name}</span>
+        <li className={zebra} key={'li'+i}>
+          <span key={'sp'+i}>{item.name}</span>
 
-          <div className="button-block">
+          <div className="button-block" key={'dv'+i}>
             <button className="error thin right"
-                    onClick={self.props.removeFromAdded.bind(this, item)}>Remove
+                    onClick={self.props.removeFromAdded.bind(null, item)} key={'btn'+i}>Remove
             </button>
-            <div className="shed-badge">{item.shed.shortName}</div>
+            <div className="shed-badge" key={'badge'+i}>{item.shed.shortName}</div>
           </div>
         </li>
           )
@@ -247,7 +243,6 @@ var FlavorApp = React.createClass({
       dataType: 'json',
       success: function (data) {
         this.setState({biojs: data});
-        //console.log(this.state.biojs)
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -279,7 +274,6 @@ var FlavorApp = React.createClass({
       this.state.found.map(function (f) {
 
         if (f.repo_owner_username === a.repo_owner_username && f.name === a.name) {
-//                    if (f.id == a.id) {
           f.added = true;
         }
         f.shed = self.state.shed;
@@ -290,31 +284,23 @@ var FlavorApp = React.createClass({
     }
   },
   addToVis: function (a) {
-    //console.log("adding: " + a.key[1]);
     var exists = this.state.biojslist.filter(function (aa) {
         return a.key[1] == aa.key[1];
       }).length > 0;
     if (!exists) {
       var newAdded = this.state.biojslist.concat([a]);
-      //console.log("biojsvis: ");
-      //console.log(newAdded);
-      //var self = this;
       var newFound = [];
       this.state.biojs.map(function (f) {
 
         if (f.key[1] === a.key[1]) {
-//                    if (f.id == a.id) {
           f.added = true;
         }
         newFound.push(f);
-        //console.log(newFound);
       });
       this.setState({biojslist: newAdded, biojs: newFound});
-      //console.log(this.state.biojslist);
     }
   },
   changeBrand: function (e) {
-    console.log(e.target.value);
     var newBrand = e.target.value;
     if (newBrand.length > 0) {
       this.setState({GALAXY_CONFIG_BRAND: newBrand})
@@ -334,7 +320,6 @@ var FlavorApp = React.createClass({
 
     var newFound = [];
     this.state.found.map(function (f) {
-//                if (f.id == a.id) {
       if (f.repo_owner_username === a.repo_owner_username && f.name === a.name) {
         f.added = false;
       }
@@ -351,7 +336,6 @@ var FlavorApp = React.createClass({
 
     var newFound = [];
     this.state.biojs.map(function (f) {
-//                if (f.id == a.id) {
       if (f.key[1] === a.key[1]) {
         f.added = false;
       }
@@ -372,8 +356,10 @@ var FlavorApp = React.createClass({
       hiddenClassbiojs = '';
       hiddenClassGeneral = '';
     }
+    var i = 0;
     var images = this.state.images.map(function (value) {
-      return <option value={value.name}>{value.name}</option>
+      i++;
+      return <option value={value.name} key={i}>{value.name}</option>
     });
     return (
       <div className="container">
@@ -456,4 +442,4 @@ var FlavorApp = React.createClass({
   }
 });
 //RISE!!
-React.render(<FlavorApp/>, document.getElementById("app"));
+ReactDOM.render(<FlavorApp/>, document.getElementById("app"));

@@ -41,3 +41,7 @@ gulp.task('one-file', function () {
     .pipe(rename('one-file.html'))
     .pipe(gulp.dest('./'));
 });
+
+gulp.task('watch', function () {
+  gulp.watch(['src/*'], ['default']);
+});
