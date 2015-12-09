@@ -98,12 +98,13 @@ function isNumber(n) {
 }
 
 function generateDockerFile(state) {
+  console.log('docker generation');
 
   var DockerFile = '';
 
   //TODO bug! space at start
 
-  DockerFile += 'FROM ' + state.baseimage +'\n\n';
+  DockerFile += 'FROM ' + state.baseimage + '\n\n';
   DockerFile += 'MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n';
   DockerFile += 'ENV GALAXY_CONFIG_BRAND "' + state.GALAXY_CONFIG_BRAND + '"\n\n';
   DockerFile += 'WORKDIR /galaxy-central\n\n';
@@ -126,9 +127,9 @@ function generateDockerFile(state) {
 
   DockerFile += repositories + '\n';
   var biojs = '';
-  if (state.biojslist.length > 0){
+  if (state.biojslist.length > 0) {
     biojs += 'RUN install-biojs ';
-    state.biojslist.forEach(function (a){
+    state.biojslist.forEach(function (a) {
       biojs += a.key[1] + ' ';
     });
     biojs += "\n";
@@ -146,6 +147,7 @@ function generateDockerFile(state) {
 }
 
 function downloadString(string, fileName) {
+  console.log('downloading');
   var blob = new Blob([string]);
   saveAs(blob, fileName);
 }

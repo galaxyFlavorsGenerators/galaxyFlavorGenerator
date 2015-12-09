@@ -5,14 +5,14 @@ var sheds = [{
   shortName: 'main',
   uri: 'https://toolshed.g2.bx.psu.edu/',
   url: 'https://toolshed.g2.bx.psu.edu/api/repositories?q='
-}];
-
+}
 //        {
 //            name: 'Test ToolShed',
 //            shortName: 'test',
 //            uri: 'https://testtoolshed.g2.bx.psu.edu/',
 //            url: 'https://testtoolshed.g2.bx.psu.edu/api/repositories?q='
 //        }
+];
 var BioJs = React.createClass({
   displayName: 'BioJs',
 
@@ -23,10 +23,10 @@ var BioJs = React.createClass({
       { className: 'border' },
       React.createElement(
         'ul',
-        { classname: className },
+        { className: className },
         this.props.biojs.map(function (item, i) {
           var zebra = isEvenNumber(i) ? '' : 'zebra';
-          var thisclick = this.props.addToAdded.bind(this, item);
+          /*var thisclick =*/this.props.addToAdded.bind(this, item);
           var toolTipText = item.key[2];
           if (item.added) {
             return React.createElement(
@@ -310,7 +310,7 @@ var FlavorApp = React.createClass({
   },
   loadImages: function loadImages() {
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json';
-    var correctURL = 'resources/flavors.json';
+    //var correctURL = 'resources/flavors.json';
     $.ajax({
       url: tempURL,
       dataType: 'json',
@@ -325,7 +325,7 @@ var FlavorApp = React.createClass({
   loadBiojs: function loadBiojs() {
     // TODO: on deployment server cronjob => curl --globoff 'https://registry.npmjs.org/-/_view/byKeyword?startkey=["galaxy-vis"]&endkey=["galaxy-vis",{}]&group_level=3' inside resources/biojs.json
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/biojs.json';
-    var correctURL = 'resources/biojs.json';
+    //var correctURL = 'resources/biojs.json';
     $.ajax({
       url: tempURL,
       dataType: 'json',
@@ -381,7 +381,7 @@ var FlavorApp = React.createClass({
       var newAdded = this.state.biojslist.concat([a]);
       //console.log("biojsvis: ");
       //console.log(newAdded);
-      var self = this;
+      //var self = this;
       var newFound = [];
       this.state.biojs.map(function (f) {
 
@@ -729,12 +729,13 @@ function isNumber(n) {
 }
 
 function generateDockerFile(state) {
+  console.log('docker generation');
 
   var DockerFile = '';
 
   //TODO bug! space at start
 
-  DockerFile += 'FROM ' + state.baseimage +'\n\n';
+  DockerFile += 'FROM ' + state.baseimage + '\n\n';
   DockerFile += 'MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com\n\n';
   DockerFile += 'ENV GALAXY_CONFIG_BRAND "' + state.GALAXY_CONFIG_BRAND + '"\n\n';
   DockerFile += 'WORKDIR /galaxy-central\n\n';
@@ -757,9 +758,9 @@ function generateDockerFile(state) {
 
   DockerFile += repositories + '\n';
   var biojs = '';
-  if (state.biojslist.length > 0){
+  if (state.biojslist.length > 0) {
     biojs += 'RUN install-biojs ';
-    state.biojslist.forEach(function (a){
+    state.biojslist.forEach(function (a) {
       biojs += a.key[1] + ' ';
     });
     biojs += "\n";
@@ -777,6 +778,7 @@ function generateDockerFile(state) {
 }
 
 function downloadString(string, fileName) {
+  console.log('downloading');
   var blob = new Blob([string]);
   saveAs(blob, fileName);
 }

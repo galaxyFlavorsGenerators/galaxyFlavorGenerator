@@ -6,7 +6,7 @@ var sheds = [
     shortName: 'main',
     uri: 'https://toolshed.g2.bx.psu.edu/',
     url: 'https://toolshed.g2.bx.psu.edu/api/repositories?q='
-  },
+  }
 //        {
 //            name: 'Test ToolShed',
 //            shortName: 'test',
@@ -18,48 +18,48 @@ var BioJs = React.createClass({
   render: function () {
     var className = this.props.biojs.length > 0 ? 'border' : '';
     return (
-        <div className="border">
-          <ul classname={className}>
+      <div className="border">
+        <ul className={className}>
 
-            {this.props.biojs.map(function (item, i) {
-              var zebra = isEvenNumber(i) ? '' : 'zebra';
-              var thisclick = this.props.addToAdded.bind(this, item);
-              var toolTipText = item.key[2];
-              if (item.added) {
-                return (
-                    <li classname={zebra} data-tooltip={toolTipText}>
-                      <span>{item.key[1]}</span>
+          {this.props.biojs.map(function (item, i) {
+            var zebra = isEvenNumber(i) ? '' : 'zebra';
+            /*var thisclick =*/ this.props.addToAdded.bind(this, item);
+            var toolTipText = item.key[2];
+            if (item.added) {
+              return (
+              <li classname={zebra} data-tooltip={toolTipText}>
+                <span>{item.key[1]}</span>
 
-                      <div className="button-block">
+                <div className="button-block">
                                                 <span className="button thin right disabled">Added
                                                 </span>
-                      </div>
-                    </li>
+                </div>
+              </li>
                 );
               } else {
 
-                var biojslink = "http://biojs.io/d/" + item.key[1];
-                var repoButton = <a href={biojslink} target="_blank"
-                                    className="button primary thin right">biojs.io</a>;
-                return (
-                    <li className={zebra} data-tooltip={toolTipText}>
-                      <span>{item.key[1]}</span>
+              var biojslink = "http://biojs.io/d/" + item.key[1];
+              var repoButton = <a href={biojslink} target="_blank"
+                                  className="button primary thin right">biojs.io</a>;
+              return (
+              <li className={zebra} data-tooltip={toolTipText}>
+                <span>{item.key[1]}</span>
 
-                      <div className="button-block">
-                        <button className="success thin right"
-                                onClick={this.props.addToAdded.bind(this, item)}>
-                          Add
-                        </button>
-                        {repoButton}
-                      </div>
-                    </li>
+                <div className="button-block">
+                  <button className="success thin right"
+                          onClick={this.props.addToAdded.bind(this, item)}>
+                    Add
+                  </button>
+                  {repoButton}
+                </div>
+              </li>
                 );
               }
             }, this)
             }
 
-          </ul>
-        </div>
+        </ul>
+      </div>
 
     )
   }
@@ -72,23 +72,23 @@ var Vislist = React.createClass({
     //console.log("rendering: ");
     //console.log(this.props.biojslist);
     return (
-        <ul className={className}>{this.props.biojslist.map(function (item, i) {
-          var zebra = isEvenNumber(i) ? '' : 'zebra';
-//                        console.log(item);
-          return (
-              <li className={zebra}>
-                <span>{item.key[1]}</span>
+      <ul className={className}>{this.props.biojslist.map(function (item, i) {
+        var zebra = isEvenNumber(i) ? '' : 'zebra';
+        //                        console.log(item);
+        return (
+        <li className={zebra}>
+          <span>{item.key[1]}</span>
 
-                <div className="button-block">
-                  <button className="error thin right"
-                          onClick={self.props.removeFromAdded.bind(this, item)}>Remove
-                  </button>
-                  <div className="shed-badge">{item.key[1]}</div>
-                </div>
-              </li>
+          <div className="button-block">
+            <button className="error thin right"
+                    onClick={self.props.removeFromAdded.bind(this, item)}>Remove
+            </button>
+            <div className="shed-badge">{item.key[1]}</div>
+          </div>
+        </li>
           )
         })}
-        </ul>
+      </ul>
     )
   }
 });
@@ -104,36 +104,36 @@ var RepositoriesFound = React.createClass({
           var repoButton = '';
           if (item.added) {
             return (
-              <li className={zebra} data-tooltip={toolTipText}>
-                <span>{item.name}</span>
+            <li className={zebra} data-tooltip={toolTipText}>
+              <span>{item.name}</span>
 
-                <div className="button-block">
+              <div className="button-block">
                                                 <span className="button thin right disabled">Added
                                                 </span>
-                </div>
-              </li>
-            );
-          } else {
+              </div>
+            </li>
+              );
+            } else {
             if (item.remote_repository_url && item.remote_repository_url.length > 0) {
               repoButton = <a href={item.remote_repository_url} target="_blank"
                               className="button primary thin right">Source Code
               </a>
-            }
+              }
             return (
-              <li className={zebra} data-tooltip={toolTipText}>
-                <span>{item.name}</span>
+            <li className={zebra} data-tooltip={toolTipText}>
+              <span>{item.name}</span>
 
-                <div className="button-block">
-                  <button className="success thin right"
-                          onClick={this.props.addToAdded.bind(this, item)}>
-                    Add
-                  </button>
-                  {repoButton}
-                </div>
-              </li>
-            );
-          }
-        }, this)}
+              <div className="button-block">
+                <button className="success thin right"
+                        onClick={this.props.addToAdded.bind(this, item)}>
+                  Add
+                </button>
+                {repoButton}
+              </div>
+            </li>
+              );
+            }
+          }, this)}
       </ul>
     );
   }
@@ -190,20 +190,20 @@ var RepositoriessList = React.createClass({
     return (
       <ul className={className}>{this.props.added.map(function (item, i) {
         var zebra = isEvenNumber(i) ? '' : 'zebra';
-//                        console.log(item);
+        //                        console.log(item);
         return (
-          <li className={zebra}>
-            <span>{item.name}</span>
+        <li className={zebra}>
+          <span>{item.name}</span>
 
-            <div className="button-block">
-              <button className="error thin right"
-                      onClick={self.props.removeFromAdded.bind(this, item)}>Remove
-              </button>
-              <div className="shed-badge">{item.shed.shortName}</div>
-            </div>
-          </li>
-        )
-      })}
+          <div className="button-block">
+            <button className="error thin right"
+                    onClick={self.props.removeFromAdded.bind(this, item)}>Remove
+            </button>
+            <div className="shed-badge">{item.shed.shortName}</div>
+          </div>
+        </li>
+          )
+        })}
       </ul>
     )
   }
@@ -226,7 +226,7 @@ var FlavorApp = React.createClass({
   },
   loadImages: function () {
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/flavors.json';
-    var correctURL = 'resources/flavors.json';
+    //var correctURL = 'resources/flavors.json';
     $.ajax({
       url: tempURL,
       dataType: 'json',
@@ -241,7 +241,7 @@ var FlavorApp = React.createClass({
   loadBiojs: function () {
     // TODO: on deployment server cronjob => curl --globoff 'https://registry.npmjs.org/-/_view/byKeyword?startkey=["galaxy-vis"]&endkey=["galaxy-vis",{}]&group_level=3' inside resources/biojs.json
     var tempURL = 'http://github-raw-cors-proxy.herokuapp.com/galaxyFlavorsGenerators/galaxyFlavorGenerator/blob/master/resources/biojs.json';
-    var correctURL = 'resources/biojs.json';
+    //var correctURL = 'resources/biojs.json';
     $.ajax({
       url: tempURL,
       dataType: 'json',
@@ -254,7 +254,7 @@ var FlavorApp = React.createClass({
       }.bind(this)
     });
   },
-  componentDidMount: function() {
+  componentDidMount: function () {
     this.loadImages();
     this.loadBiojs();
   },
@@ -292,13 +292,13 @@ var FlavorApp = React.createClass({
   addToVis: function (a) {
     //console.log("adding: " + a.key[1]);
     var exists = this.state.biojslist.filter(function (aa) {
-          return a.key[1] == aa.key[1];
-        }).length > 0;
+        return a.key[1] == aa.key[1];
+      }).length > 0;
     if (!exists) {
       var newAdded = this.state.biojslist.concat([a]);
       //console.log("biojsvis: ");
       //console.log(newAdded);
-      var self = this;
+      //var self = this;
       var newFound = [];
       this.state.biojs.map(function (f) {
 
@@ -376,82 +376,82 @@ var FlavorApp = React.createClass({
       return <option value={value.name}>{value.name}</option>
     });
     return (
-        <div className="container">
-          <Tabs>
-            <Tabs.Panel title='Galaxy tools'>
-              <h2>Please add repositories you would like to have in your Galaxy</h2>
-              <div id="search">
-                <SearchInput onSearchChange={this.onSearchChange} changeShed={this.changeShed}/>
-                <Loading loading={this.state.loading} key="loading"/>
-                <RepositoriesFound found={this.state.found} addToAdded={this.addToAdded}
-                                   key="repositoriesFound"/>
-              </div>
-            </Tabs.Panel>
-            <Tabs.Panel title='BioJS visualisations'>
+      <div className="container">
+        <Tabs>
+          <Tabs.Panel title='Galaxy tools'>
+            <h2>Please add repositories you would like to have in your Galaxy</h2>
+            <div id="search">
+              <SearchInput onSearchChange={this.onSearchChange} changeShed={this.changeShed}/>
+              <Loading loading={this.state.loading} key="loading"/>
+              <RepositoriesFound found={this.state.found} addToAdded={this.addToAdded}
+                                 key="repositoriesFound"/>
+            </div>
+          </Tabs.Panel>
+          <Tabs.Panel title='BioJS visualisations'>
 
-              <div id="BioJs">
-                <h2>Please add visualisations you would like to have in your Galaxy</h2>
-                <BioJs biojs={this.state.biojs} addToAdded={this.addToVis}/>
-              </div>
-            </Tabs.Panel>
-          </Tabs>
-          <hr/>
-          <h3>Config</h3>
+            <div id="BioJs">
+              <h2>Please add visualisations you would like to have in your Galaxy</h2>
+              <BioJs biojs={this.state.biojs} addToAdded={this.addToVis}/>
+            </div>
+          </Tabs.Panel>
+        </Tabs>
+        <hr/>
+        <h3>Config</h3>
 
-          <div className="row">
-            <div className="col12">
-              <div >
-                <label>Base galaxy image:</label>
-                <select onChange={this.imageChange}>
-                  {images}
-                </select>
-              </div>
-              <label>GALAXY_CONFIG_BRAND</label>
-              <input type="text" placeholder="Galaxy" onChange={this.changeBrand}/>
-
-              <label>Galaxy release</label>
-              <select>
-                <option>15.05</option>
+        <div className="row">
+          <div className="col12">
+            <div >
+              <label>Base galaxy image:</label>
+              <select onChange={this.imageChange}>
+                {images}
               </select>
             </div>
+            <label>GALAXY_CONFIG_BRAND</label>
+            <input type="text" placeholder="Galaxy" onChange={this.changeBrand}/>
+
+            <label>Galaxy release</label>
+            <select>
+              <option>15.05</option>
+            </select>
           </div>
+        </div>
 
-          <hr/>
+        <hr/>
 
-          <div className={hiddenClassGeneral}>
-            <div className="row">
-              <div className="col12">
-                <h3 className="no-margin-top">Your Galaxy will have the following:</h3>
+        <div className={hiddenClassGeneral}>
+          <div className="row">
+            <div className="col12">
+              <h3 className="no-margin-top">Your Galaxy will have the following:</h3>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col8">
+              <div className={hiddenClass}>
+                <div id="repositories-added">
+                  <h5>Galaxy tools</h5>
+                  <RepositoriessList added={this.state.added}
+                                     removeFromAdded={this.removeFromAdded}/>
+                </div>
+              </div>
+              <div className={hiddenClassbiojs}>
+                <div id="repositories-added">
+                  <h5>BioJS visualisations</h5>
+                  <Vislist biojslist={this.state.biojslist}
+                           removeFromAdded={this.removeFromVis}/>
+                </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col8">
-                <div className={hiddenClass}>
-                  <div id="repositories-added">
-                    <h5>Galaxy tools</h5>
-                    <RepositoriessList added={this.state.added}
-                                       removeFromAdded={this.removeFromAdded}/>
-                  </div>
-                </div>
-                <div className={hiddenClassbiojs}>
-                  <div id="repositories-added">
-                    <h5>BioJS visualisations</h5>
-                    <Vislist biojslist={this.state.biojslist}
-                             removeFromAdded={this.removeFromVis}/>
-                  </div>
-                </div>
-              </div>
-              <div className="col4">
-                <button className="button full-width"
-                        onClick={generateDockerFile.bind(this,this.state)}>
-                  Give me a Docker
-                </button>
-                <button className="button full-width" disabled>Give me a VM</button>
-                <button className="button full-width" disabled>Give me a Cloud</button>
-              </div>
+            <div className="col4">
+              <button className="button full-width"
+                      onClick={generateDockerFile.bind(this,this.state)}>
+                Give me a Docker
+              </button>
+              <button className="button full-width" disabled>Give me a VM</button>
+              <button className="button full-width" disabled>Give me a Cloud</button>
             </div>
           </div>
         </div>
+      </div>
     );
   }
 });
